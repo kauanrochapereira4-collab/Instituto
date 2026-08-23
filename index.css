@@ -53,20 +53,23 @@ main{ margin-top:0; padding-top:0; }
   background:var(--vinho-escuro);
   border-bottom:2px solid var(--dourado);
   margin-bottom:0;
+  min-width:320px;
 }
 .header-bar{
   display:flex; align-items:center; justify-content:space-between;
-  gap:1.5rem; padding:.6rem 0;
+  gap:1rem; padding:.6rem 0;
+  min-width:320px;
 }
 
 .brand{ 
-  display:flex; align-items:center; gap:.9rem; 
+  display:flex; align-items:center; gap:.7rem; 
   text-decoration:none;
-  margin-left: 2rem; /* ← EMPURRA BRASÃO + NOME PARA A DIREITA */
+  margin-left: 1.5rem;
+  flex-shrink:0;
 }
 
 .brand-mark{ 
-  width:52px; height:52px; flex:none; 
+  width:44px; height:44px; flex:none; 
   display:flex; align-items:center; justify-content:center;
   background:transparent;
   border-radius:0;
@@ -80,21 +83,22 @@ main{ margin-top:0; padding-top:0; }
 
 .brand-text{ 
   display:flex; flex-direction:column; 
-  line-height:1.2;
-  margin-top: 0.4rem; /* ← NOME MAIS PARA BAIXO para alinhar com o brasão */
+  line-height:1.15;
+  margin-top: 0.3rem;
 }
 .brand-text .eyebrow-brand{ 
   display:block; 
   font-family:var(--ui); 
-  font-size:.78rem; 
+  font-size:.7rem; 
   color:var(--dourado);
   font-weight:500; 
-  line-height:1.3;
+  line-height:1.2;
+  white-space:nowrap;
 }
 .brand-text .brand-name{ 
   font-family:var(--ui); 
   font-weight:700; 
-  font-size:.98rem; 
+  font-size:.88rem; 
   color:#fff;
   letter-spacing:.02em; 
 }
@@ -181,7 +185,7 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
 }
 
 /* ==========================================================
-   HERO — CAIXA VERMELHA MENOR E TUDO LEGÍVEL
+   HERO — Quadrado completo no celular
    ========================================================== */
 
 .home-hero {
@@ -238,11 +242,11 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
 
 .home-hero-box {
   position: absolute;
-  top: 70%; /* ← MAIS EMBAIXO para não cobrir tudo */
+  top: 78%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
-  width: min(520px, 94%); /* ← MENOR LARGURA */
+  width: min(540px, 90%);
   animation: fadeInUp 1s ease-out forwards;
   opacity: 0;
 }
@@ -263,8 +267,8 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   );
   color: #fff;
   text-align: center;
-  padding: 12px 16px; /* ← MENOS ESPAÇO INTERNO */
-  border-radius: 10px;
+  padding: 18px 20px;
+  border-radius: 14px;
   border: 1px solid var(--dourado);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(4px);
@@ -273,9 +277,9 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
 .home-hero-box-inner h1 {
   font-family: var(--display);
   color: #fff;
-  font-size: clamp(0.9rem, 1.8vw, 1.1rem); /* ← FONTE MENOR */
-  margin: 0 0 0.3rem;
-  letter-spacing: 0.02em;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  margin: 0 0 0.4rem;
+  letter-spacing: 0.03em;
   line-height: 1.3;
   font-weight: 600;
   text-transform: uppercase;
@@ -285,19 +289,19 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   font-family: var(--serif);
   font-style: italic;
   color: var(--dourado-claro);
-  font-size: 0.82rem; /* ← FONTE MENOR */
-  margin-bottom: 0.2rem;
-  line-height: 1.4;
+  font-size: 0.92rem;
+  margin-bottom: 0.35rem;
+  line-height: 1.5;
 }
 
 .hero-meta {
   font-family: var(--serif);
   font-style: italic;
-  font-size: 0.72rem; /* ← FONTE MENOR */
+  font-size: 0.8rem;
   color: #e9d4b8;
   margin-bottom: 0;
   opacity: 0.92;
-  line-height: 1.3;
+  line-height: 1.4;
 }
 
 /* --- Cartões: Prior Geral e Fundador --- */
@@ -435,26 +439,27 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
 }
 
 /* =====================================================
-   📱 RESPONSIVIDADE — Tudo proporcional
+   📱 RESPONSIVIDADE — MENU LATERAL NÃO SOBREPÕE
    ===================================================== */
 
 @media (max-width:980px){
   .nav-toggle{ display:block; }
 
   nav.primary-nav{
-    position:fixed; top:0; right:0; bottom:0; width:min(320px,86%); height:100vh;
+    position:fixed; top:0; right:0; bottom:0; width:min(280px, 85%); height:100vh;
     background:var(--vinho-escuro);
     flex-direction:column; align-items:stretch;
     transform:translateX(100%); transition:transform .25s ease; 
-    padding:5rem 1.2rem 2rem;
-    box-shadow:var(--sombra); overflow:auto;
+    padding:4.5rem 1.2rem 2rem;
+    box-shadow:-5px 0 20px rgba(0,0,0,.4); overflow-y:auto;
+    z-index:999;
   }
   nav.primary-nav.open{ transform:translateX(0); }
 
   .nav-close{ display:block; }
 
-  nav.primary-nav ul{ flex-direction:column; align-items:stretch; }
-  nav.primary-nav > ul > li > a{ border-bottom:1px solid rgba(205,167,79,.15); }
+  nav.primary-nav ul{ flex-direction:column; align-items:stretch; width:100%; }
+  nav.primary-nav > ul > li > a{ border-bottom:1px solid rgba(205,167,79,.15); width:100%; }
 
   .dropdown{ 
     position:static; 
@@ -493,65 +498,68 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
 }
 
 @media (max-width:640px){
-  /* --- CABEÇALHO — Empurrado para direita e alinhado --- */
+  html{ font-size:15px; }
+  body{ min-width:320px; }
+
+  /* --- CABEÇALHO --- */
   .header-bar {
-    flex-wrap: nowrap;
-    gap: 0.6rem;
-    padding: 0.6rem 0;
+    flex-wrap:nowrap;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
   }
 
   .brand {
-    gap: 0.6rem;
-    margin-left: 1.5rem; /* ← EMPURRA PARA DIREITA no celular também */
+    gap: 0.5rem;
+    margin-left: 1rem;
   }
 
   .brand-mark {
-    width: 40px !important;
-    height: 40px !important;
+    width: 38px !important;
+    height: 38px !important;
     flex-shrink: 0;
   }
 
   .brand-text {
-    margin-top: 0.3rem; /* ← NOME MAIS PARA BAIXO no celular */
+    margin-top: 0.25rem;
   }
 
   .brand-text .eyebrow-brand {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     line-height: 1.1;
   }
 
   .brand-text .brand-name {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     line-height: 1.2;
   }
 
-  /* --- CAIXA VERMELHA — MENOR E TUDO LEGÍVEL --- */
+  /* --- ✅ Quadrado vermelho MAIS EMBAIXO = APARECE TUDO --- */
   .home-hero-box {
-    top: 70% !important;
+    top: 80% !important;
     width: 94% !important;
     transform: translate(-50%, -50%) !important;
   }
 
   .home-hero-box-inner {
-    padding: 10px 12px !important;
-    border-radius: 8px !important;
+    padding: 12px 14px !important;
+    border-radius: 10px !important;
   }
 
   .home-hero-box-inner h1 {
-    font-size: 0.82rem !important;
-    margin-bottom: 0.25rem !important;
-    line-height: 1.25 !important;
-  }
-
-  .hero-text {
-    font-size: 0.75rem !important;
-    margin-bottom: 0.15rem !important;
+    font-size: 0.85rem !important;
+    margin-bottom: 0.3rem !important;
     line-height: 1.3 !important;
   }
 
+  .hero-text {
+    font-size: 0.78rem !important;
+    margin-bottom: 0.2rem !important;
+    line-height: 1.35 !important;
+  }
+
   .hero-meta {
-    font-size: 0.68rem !important;
-    line-height: 1.25 !important;
+    font-size: 0.7rem !important;
+    line-height: 1.3 !important;
   }
 
   .priest-card, .founder-card {
