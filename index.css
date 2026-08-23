@@ -14,12 +14,18 @@
 
 *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
 html{ scroll-behavior:smooth; }
+
+/* ======================================
+   ✅ TRAVA A TELA — NÃO DIMINUI MAIS
+   ====================================== */
 body{
   margin:0;
   font-family:var(--serif);
   color:var(--tinta);
   background:var(--creme);
   line-height:1.6;
+  min-width:360px;    /* ← NÃO fica menor que isso */
+  overflow-x:hidden;   /* ← NÃO deixa rolar para o lado */
 }
 img{ max-width:100%; display:block; }
 a{ text-decoration:none; color:inherit; }
@@ -31,6 +37,7 @@ h1,h2,h3,h4{ font-family:var(--ui); color:var(--vinho-escuro); }
   position:sticky; top:0; z-index:50;
   background:var(--vinho-escuro);
   border-bottom:2px solid var(--dourado);
+  min-width:360px;
 }
 .header-bar{
   display:flex; align-items:center; justify-content:space-between;
@@ -47,50 +54,61 @@ h1,h2,h3,h4{ font-family:var(--ui); color:var(--vinho-escuro); }
 .brand-text .eyebrow-brand{ font-size:.7rem; color:var(--dourado); font-family:var(--ui); }
 .brand-text .brand-name{ font-size:.9rem; color:#fff; font-weight:700; font-family:var(--ui); }
 
-/* --- MENU LATERAL — CORREÇÃO PRINCIPAL --- */
+/* ======================================
+   ✅ MENU — NÃO APARECE JUNTO CONTEÚDO
+   ====================================== */
 .nav-toggle{
   display:block; margin-right:1.2rem;
   background:transparent; border:1px solid var(--dourado);
   color:#fff; padding:.4rem .6rem; font-size:1.2rem;
   border-radius:4px; cursor:pointer;
+  z-index:1001; position:relative;
 }
 
+/* Menu fechado → FORA DA TELA, NÃO APARECE NADA */
 nav.primary-nav{
   position:fixed; top:0; right:0; bottom:0;
-  width:280px; max-width:85%;
+  width:290px; max-width:88%;
   background:var(--vinho-escuro);
-  transform:translateX(100%); transition:.25s ease;
-  z-index:999;
-  padding:4rem 1rem 2rem;
+  transform:translateX(100%); /* ← FORA DA TELA quando fechado */
+  transition:transform .25s ease;
+  z-index:1000;
+  padding:4.5rem 1.2rem 2rem;
   overflow-y:auto;
-  box-shadow:-4px 0 15px rgba(0,0,0,.4);
+  box-shadow:-5px 0 20px rgba(0,0,0,.5);
 }
+
+/* Menu ABERTO → entra da direita, SÓ ele na tela */
 nav.primary-nav.open{ transform:translateX(0); }
 
 .nav-close{
   position:absolute; top:.8rem; right:.8rem;
   background:transparent; border:1px solid var(--dourado);
-  color:var(--dourado); padding:.3rem .6rem;
+  color:var(--dourado); padding:.4rem .7rem;
   border-radius:4px; cursor:pointer; font-size:1rem;
 }
 
 nav.primary-nav ul{ list-style:none; display:flex; flex-direction:column; gap:.2rem; }
+nav.primary-nav li{ width:100%; }
 nav.primary-nav a{
-  display:block; padding:.8rem 1rem; color:#fff;
-  font-family:var(--ui); font-size:.9rem;
+  display:block; padding:.9rem 1rem; color:#fff;
+  font-family:var(--ui); font-size:.95rem;
   border-bottom:1px solid rgba(205,167,79,.15);
+  width:100%;
 }
 nav.primary-nav a:hover{ color:var(--dourado); }
 
-/* --- FUNDO ESCURO quando menu abre --- */
+/* ✅ FUNDO ESCURO — fecha o conteúdo quando menu abre */
 .menu-overlay{
-  position:fixed; inset:0; background:rgba(0,0,0,.5);
-  z-index:998; opacity:0; visibility:hidden;
+  position:fixed; inset:0; background:rgba(0,0,0,.6);
+  z-index:999; opacity:0; visibility:hidden;
   transition:.25s ease;
 }
 body.menu-open .menu-overlay{ opacity:1; visibility:visible; }
 
-/* --- HERO / QUADRADO VERMELHO --- */
+/* ======================================
+   ✅ HERO / QUADRADO VERMELHO — APARECE TUDO
+   ====================================== */
 .home-hero{ position:relative; width:100%; overflow:hidden; }
 .home-hero-photo{ position:relative; width:100%; padding-top:50%; }
 .home-hero-photo-img{
@@ -99,14 +117,14 @@ body.menu-open .menu-overlay{ opacity:1; visibility:visible; }
 }
 
 .home-hero-box{
-  position:absolute; top:82%; left:50%;
+  position:absolute; top:83%; left:50%;
   transform:translate(-50%, -50%);
   width:min(520px, 94%); z-index:10;
 }
 .home-hero-box-inner{
   background:linear-gradient(145deg, rgba(90,16,22,.88), rgba(60,10,15,.92));
   color:#fff; text-align:center;
-  padding:14px 16px; border-radius:10px;
+  padding:15px 18px; border-radius:10px;
   border:1px solid var(--dourado);
 }
 .home-hero-box-inner h1{
@@ -123,7 +141,7 @@ body.menu-open .menu-overlay{ opacity:1; visibility:visible; }
   font-size:.75rem; line-height:1.35;
 }
 
-/* --- CONTEÚDO GERAL --- */
+/* --- CONTEÚDO --- */
 section{ padding:3rem 0; }
 .priest-card, .founder-card{
   display:flex; gap:1.5rem; align-items:flex-start;
@@ -164,7 +182,9 @@ footer.site-footer{
 }
 .footer-grid{ display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:2rem; }
 
-/* --- RESPONSIVO — SEM BAGUNÇAR --- */
+/* ======================================
+   ✅ RESPONSIVO — SEM BAGUNÇAR
+   ====================================== */
 @media (max-width:860px){
   .grid-3{ grid-template-columns:1fr 1fr; }
   .footer-grid{ grid-template-columns:1fr 1fr; }
@@ -176,8 +196,8 @@ footer.site-footer{
   .brand-text .eyebrow-brand{ font-size:.6rem; }
   .brand-text .brand-name{ font-size:.8rem; }
 
-  /* QUADRADO NO CELULAR — APARECE TUDO */
-  .home-hero-box{ top:82%; width:94%; }
+  /* QUADRADO APARECE INTEIRO */
+  .home-hero-box{ top:83%; width:94%; }
   .home-hero-box-inner{ padding:12px 14px; }
   .home-hero-box-inner h1{ font-size:.85rem; }
   .hero-text{ font-size:.78rem; }
