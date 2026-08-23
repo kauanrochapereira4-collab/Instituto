@@ -1,6 +1,6 @@
 /* ==========================================================================
-   Instituto Missionário Servos de Jesus Salvador — Design ORIGINAL
-   Só corrigido: tela travada, menu não aparece junto, quadrado completo
+   Instituto Missionário Servos de Jesus Salvador — Identidade Digital
+   Paleta: institucional (vinho) / humildade (marrom) / leveza (dourado-creme)
    ========================================================================== */
 
 :root{
@@ -24,10 +24,6 @@
 
 *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
 html{ scroll-behavior:smooth; }
-
-/* ======================================
-   ✅ TRAVA A TELA — NÃO DIMINUI MAIS
-   ====================================== */
 body{
   margin:0;
   font-family:var(--serif);
@@ -35,8 +31,6 @@ body{
   background:var(--creme);
   line-height:1.65;
   -webkit-font-smoothing:antialiased;
-  min-width:360px;    /* ← TRAVA a largura mínima */
-  overflow-x:hidden;   /* ← NÃO deixa rolar para o lado */
 }
 img{ max-width:100%; display:block; }
 a{ color:inherit; text-decoration:none; }
@@ -53,7 +47,7 @@ p{ margin:0 0 1em; }
 main{ margin-top:0; padding-top:0; }
 @media (prefers-reduced-motion: reduce){ *{ animation-duration:.001ms !important; transition-duration:.001ms !important; } }
 
-/* --- CABEÇALHO — Design ORIGINAL --- */
+/* --- Cabeçalho / Navegação --- */
 .site-header{
   position:sticky; top:0; z-index:50;
   background:var(--vinho-escuro);
@@ -68,7 +62,7 @@ main{ margin-top:0; padding-top:0; }
 .brand{ 
   display:flex; align-items:center; gap:.9rem; 
   text-decoration:none;
-  margin-left: 2rem;
+  margin-left: 2rem; /* ← EMPURRA BRASÃO + NOME PARA A DIREITA */
 }
 
 .brand-mark{ 
@@ -87,7 +81,7 @@ main{ margin-top:0; padding-top:0; }
 .brand-text{ 
   display:flex; flex-direction:column; 
   line-height:1.2;
-  margin-top: 0.4rem;
+  margin-top: 0.4rem; /* ← NOME MAIS PARA BAIXO para alinhar com o brasão */
 }
 .brand-text .eyebrow-brand{ 
   display:block; 
@@ -105,49 +99,12 @@ main{ margin-top:0; padding-top:0; }
   letter-spacing:.02em; 
 }
 
-/* ======================================
-   ✅ MENU — Design ORIGINAL mas CORRIGIDO
-   ====================================== */
-.nav-toggle{ display:block; margin-right:1.5rem; }
-
-nav.primary-nav{
-  position:fixed; top:0; right:0; bottom:0; 
-  width:min(320px,86%); height:100vh;
-  background:var(--vinho-escuro);
-  flex-direction:column; align-items:stretch;
-  transform:translateX(100%); /* ← FORA DA TELA quando fechado */
-  transition:transform .25s ease; 
-  padding:5rem 1.2rem 2rem;
-  box-shadow:-5px 0 20px rgba(0,0,0,.4); 
-  overflow-y:auto;
-  z-index:999;
-}
-nav.primary-nav.open{ transform:translateX(0); }
-
-.nav-close{
-  display:block;
-  position:absolute;
-  top:1rem;
-  right:1rem;
-  background:transparent;
-  border:1px solid var(--dourado);
-  color:var(--dourado);
-  font-size:1rem;
-  padding:.4rem .8rem;
-  border-radius:6px;
-  cursor:pointer;
-  transition:all .25s ease;
-}
-.nav-close:hover{
-  background:var(--dourado);
-  color:var(--vinho-escuro);
-}
-
-nav.primary-nav ul{ list-style:none; display:flex; flex-direction:column; gap:.1rem; margin:0; padding:0; align-items:stretch; }
-nav.primary-nav > ul > li{ position:relative; width:100%; }
+nav.primary-nav{ display:flex; align-items:center; gap:.2rem; }
+nav.primary-nav ul{ list-style:none; display:flex; gap:.1rem; margin:0; padding:0; align-items:center; }
+nav.primary-nav > ul > li{ position:relative; }
 nav.primary-nav > ul > li > a{
   display:block; padding:.7rem 1rem; font-family:var(--ui); font-size:.88rem; font-weight:500;
-  letter-spacing:.01em; color:#fff; border-bottom:1px solid rgba(205,167,79,.15); 
+  letter-spacing:.01em; color:#fff; border-bottom:2px solid transparent; 
   transition:all .25s ease; cursor:pointer;
 }
 nav.primary-nav > ul > li > a:hover{ color:var(--dourado); border-bottom-color:var(--dourado); }
@@ -171,45 +128,62 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   transform:rotate(180deg);
 }
 
-/* Dropdown — Design ORIGINAL */
-.dropdown{ 
-  position:static; 
-  max-height:0; 
-  opacity:0; 
-  visibility:hidden; 
-  transform:translateY(0); 
-  box-shadow:none; 
-  border:none; 
-  background:rgba(0,0,0,.15);
-  padding-left:.8rem; 
-  padding-top:0; 
-  margin:0;
-  overflow:hidden;
-  transition:max-height .25s ease, opacity .2s ease, padding .25s ease;
+/* --- Dropdown — Abre SÓ ao Clicar --- */
+.dropdown{
+  position:absolute; top:100%; left:0; min-width:260px; 
+  background:linear-gradient(160deg, #fff9f5 0%, #ffffff 100%);
+  border:1px solid var(--dourado-claro); 
+  box-shadow:0 10px 30px rgba(95, 22, 16, .22); 
+  padding:.7rem 0; border-radius:10px;
+  opacity:0; visibility:hidden; transform:translateY(12px);
+  transition:opacity .25s ease, transform .25s ease, visibility .25s;
+  z-index:100;
 }
+
 .has-dropdown.open .dropdown{ 
-  max-height:500px; 
-  opacity:1; 
-  visibility:visible; 
-  padding-top:.5rem;
+  opacity:1; visibility:visible; transform:translateY(0); 
 }
+
 .dropdown a{ 
   display:block; padding:.85rem 1.2rem; font-family:var(--ui); 
-  font-size:.9rem; color:#f1e4cc; 
+  font-size:.9rem; color:var(--marrom); 
   border-radius:0; margin:0 .4rem;
   transition:all .2s ease;
   border-left:3px solid transparent;
 }
 .dropdown a:hover{ 
-  background:rgba(205,167,79,.25); 
-  color:#fff; 
+  background:linear-gradient(90deg, rgba(205,167,79,.18) 0%, transparent 100%); 
+  color:var(--vinho); 
   border-left-color:var(--dourado);
   padding-left:1.4rem;
 }
 
+.nav-toggle{ display:none; background:none; border:1px solid rgba(243,215,163,.4); padding:.5rem .65rem; font-size:1.1rem; color:#f1e4cc; cursor:pointer; }
+
+/* --- Botão Fechar no Menu Lateral --- */
+.nav-close{
+  display:none;
+  position:absolute;
+  top:1rem;
+  right:1rem;
+  background:transparent;
+  border:1px solid var(--dourado);
+  color:var(--dourado);
+  font-size:1rem;
+  padding:.4rem .8rem;
+  border-radius:6px;
+  cursor:pointer;
+  transition:all .25s ease;
+}
+.nav-close:hover{
+  background:var(--dourado);
+  color:var(--vinho-escuro);
+}
+
 /* ==========================================================
-   ✅ HERO — Design ORIGINAL + Quadrado completo
+   HERO — CAIXA VERMELHA MENOR E TUDO LEGÍVEL
    ========================================================== */
+
 .home-hero {
   position: relative;
   width: 100%;
@@ -262,14 +236,13 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   border-bottom-right-radius: 50% 12%;
 }
 
-/* ✅ Quadrado em posição que APARECE TUDO */
 .home-hero-box {
   position: absolute;
-  top: 80%; /* ← Mais embaixo = não corta */
+  top: 70%; /* ← MAIS EMBAIXO para não cobrir tudo */
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
-  width: min(540px, 92%);
+  width: min(520px, 94%); /* ← MENOR LARGURA */
   animation: fadeInUp 1s ease-out forwards;
   opacity: 0;
 }
@@ -290,8 +263,8 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   );
   color: #fff;
   text-align: center;
-  padding: 18px 20px;
-  border-radius: 14px;
+  padding: 12px 16px; /* ← MENOS ESPAÇO INTERNO */
+  border-radius: 10px;
   border: 1px solid var(--dourado);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(4px);
@@ -300,9 +273,9 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
 .home-hero-box-inner h1 {
   font-family: var(--display);
   color: #fff;
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  margin: 0 0 0.4rem;
-  letter-spacing: 0.03em;
+  font-size: clamp(0.9rem, 1.8vw, 1.1rem); /* ← FONTE MENOR */
+  margin: 0 0 0.3rem;
+  letter-spacing: 0.02em;
   line-height: 1.3;
   font-weight: 600;
   text-transform: uppercase;
@@ -312,22 +285,22 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   font-family: var(--serif);
   font-style: italic;
   color: var(--dourado-claro);
-  font-size: 0.92rem;
-  margin-bottom: 0.35rem;
-  line-height: 1.5;
+  font-size: 0.82rem; /* ← FONTE MENOR */
+  margin-bottom: 0.2rem;
+  line-height: 1.4;
 }
 
 .hero-meta {
   font-family: var(--serif);
   font-style: italic;
-  font-size: 0.8rem;
+  font-size: 0.72rem; /* ← FONTE MENOR */
   color: #e9d4b8;
   margin-bottom: 0;
   opacity: 0.92;
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
-/* --- RESTO DO DESIGN TUDO IGUAL ORIGINAL --- */
+/* --- Cartões: Prior Geral e Fundador --- */
 .prior-message{ padding-top:0; }
 .priest-card, .founder-card{
   display:flex; gap:1.8rem; align-items:flex-start; background:#fff;
@@ -369,6 +342,7 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
 }
 .founder-sub{ font-size:.85rem; color:#777; margin-top:.2rem; }
 
+/* --- Seções e Grades --- */
 section{ padding:4rem 0; }
 .section-block{ padding-top:1rem; }
 
@@ -384,6 +358,7 @@ section{ padding:4rem 0; }
 .card h3{ font-size:1.08rem; color:var(--marrom); margin-bottom:.8rem; }
 .card p{ font-size:.95rem; line-height:1.6; }
 
+/* --- Botões --- */
 .btn{
   display:inline-block; font-family:var(--ui); font-weight:600; font-size:.88rem; letter-spacing:.01em;
   padding:.75rem 1.4rem; border:none; border-radius:5px; color:#fff; background:var(--marrom); cursor:pointer;
@@ -399,6 +374,7 @@ section{ padding:4rem 0; }
   color:var(--marrom); 
 }
 
+/* --- Rodapé --- */
 footer.site-footer{ 
   background:var(--vinho); color:#e9d4b8; padding:3.2rem 0 1.6rem; 
   border-top:4px solid var(--dourado); margin-top:2rem; 
@@ -421,54 +397,191 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
   display:flex; justify-content:space-between; flex-wrap:wrap; gap:.6rem; 
 }
 
+/* =====================================================
+   📱 ÍCONES DAS REDES SOCIAIS
+   ===================================================== */
 .social-row {
   display: flex;
   gap: 12px;
   margin-top: 1rem;
 }
+
 .social-row a {
-  width: 28px; height: 28px; display: flex;
-  align-items: center; justify-content: center;
-  background: transparent; border: none; border-radius: 0;
-  padding: 0; text-indent: 0; font-size: 0;
+  width: 28px;
+  height: 28px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0;
+  padding: 0 !important;
+  text-indent: 0 !important;
+  font-size: 0 !important;
   transition: transform .3s ease;
 }
-.social-row a img {
-  width: 28px; height: 28px; object-fit: contain; display: block; margin: 0; padding: 0;
-}
-.social-row a:hover { transform: scale(1.15); }
 
-/* ======================================
-   ✅ CELULAR — Design IGUAL + Tela Travada
-   ====================================== */
+.social-row a img {
+  width: 28px !important;
+  height: 28px !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.social-row a:hover {
+  transform: scale(1.15);
+}
+
+/* =====================================================
+   📱 RESPONSIVIDADE — Tudo proporcional
+   ===================================================== */
+
 @media (max-width:980px){
   .nav-toggle{ display:block; }
-  .grid-3{ grid-template-columns:1fr 1fr; }
-  .footer-grid{ grid-template-columns:1fr 1fr; }
+
+  nav.primary-nav{
+    position:fixed; top:0; right:0; bottom:0; width:min(320px,86%); height:100vh;
+    background:var(--vinho-escuro);
+    flex-direction:column; align-items:stretch;
+    transform:translateX(100%); transition:transform .25s ease; 
+    padding:5rem 1.2rem 2rem;
+    box-shadow:var(--sombra); overflow:auto;
+  }
+  nav.primary-nav.open{ transform:translateX(0); }
+
+  .nav-close{ display:block; }
+
+  nav.primary-nav ul{ flex-direction:column; align-items:stretch; }
+  nav.primary-nav > ul > li > a{ border-bottom:1px solid rgba(205,167,79,.15); }
+
+  .dropdown{ 
+    position:static; 
+    max-height:0; 
+    opacity:0; 
+    visibility:hidden; 
+    transform:translateY(0); 
+    box-shadow:none; 
+    border:none; 
+    background:rgba(0,0,0,.15);
+    padding-left:.8rem; 
+    padding-top:0; 
+    margin:0;
+    overflow:hidden;
+    transition:max-height .25s ease, opacity .2s ease, padding .25s ease;
+  }
+  .has-dropdown.open .dropdown{ 
+    max-height:500px; 
+    opacity:1; 
+    visibility:visible; 
+    padding-top:.5rem;
+  }
+  .has-dropdown > a::after{ float:right; }
+
+  .dropdown a{ color:#f1e4cc; border-left-color:transparent; }
+  .dropdown a:hover{ 
+    background:rgba(205,167,79,.25); 
+    color:#fff; 
+    border-left-color:var(--dourado);
+  }
+}
+
+@media (max-width:860px){ 
+  .grid-3{ grid-template-columns:1fr 1fr; } 
+  .footer-grid{ grid-template-columns:1fr 1fr; } 
 }
 
 @media (max-width:640px){
-  .brand{ margin-left:1.5rem; }
-  .brand-mark{ width:40px; height:40px; }
-  .brand-text .eyebrow-brand{ font-size:.65rem; }
-  .brand-text .brand-name{ font-size:.85rem; }
+  /* --- CABEÇALHO — Empurrado para direita e alinhado --- */
+  .header-bar {
+    flex-wrap: nowrap;
+    gap: 0.6rem;
+    padding: 0.6rem 0;
+  }
 
-  /* Quadrado aparece TODO */
-  .home-hero-box{ top:80%; width:94%; }
-  .home-hero-box-inner{ padding:14px 16px; }
-  .home-hero-box-inner h1{ font-size:.9rem; }
-  .hero-text{ font-size:.82rem; }
-  .hero-meta{ font-size:.75rem; }
+  .brand {
+    gap: 0.6rem;
+    margin-left: 1.5rem; /* ← EMPURRA PARA DIREITA no celular também */
+  }
 
-  .priest-card, .founder-card{ flex-direction:column; text-align:center; gap:1rem; padding:1.2rem; }
-  .priest-photo, .founder-photo{ margin:0 auto; width:120px; height:120px; margin-top:1rem; }
+  .brand-mark {
+    width: 40px !important;
+    height: 40px !important;
+    flex-shrink: 0;
+  }
 
-  .grid-3{ grid-template-columns:1fr; }
-  .footer-grid{ grid-template-columns:1fr; gap:1.5rem; }
+  .brand-text {
+    margin-top: 0.3rem; /* ← NOME MAIS PARA BAIXO no celular */
+  }
 
-  section{ padding:2rem 0; }
-  footer.site-footer{ padding:2rem 0 1.2rem; }
-  .footer-bottom{ flex-direction:column; text-align:center; gap:.5rem; }
+  .brand-text .eyebrow-brand {
+    font-size: 0.65rem;
+    line-height: 1.1;
+  }
+
+  .brand-text .brand-name {
+    font-size: 0.85rem;
+    line-height: 1.2;
+  }
+
+  /* --- CAIXA VERMELHA — MENOR E TUDO LEGÍVEL --- */
+  .home-hero-box {
+    top: 70% !important;
+    width: 94% !important;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  .home-hero-box-inner {
+    padding: 10px 12px !important;
+    border-radius: 8px !important;
+  }
+
+  .home-hero-box-inner h1 {
+    font-size: 0.82rem !important;
+    margin-bottom: 0.25rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .hero-text {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.15rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .hero-meta {
+    font-size: 0.68rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .priest-card, .founder-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    padding: 1.2rem;
+  }
+  .priest-photo, .founder-photo {
+    margin: 0 auto;
+    width: 120px;
+    height: 120px;
+  }
+
+  .grid-3 { grid-template-columns: 1fr; gap: 1.2rem; }
+  .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+
+  section { padding: 2rem 0; }
+
+  .btn {
+    padding: 0.65rem 1.2rem;
+    font-size: 0.85rem;
+  }
+
+  footer.site-footer { padding: 2rem 0 1.2rem; }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
 }
 
 img, .container, section, .card {
@@ -488,6 +601,7 @@ img, .container, section, .card {
   transform: translateY(15px);
   transition: opacity .35s ease-out, transform .35s ease-out;
 }
+
 .apareceu {
   opacity: 1;
   transform: translateY(0);
@@ -497,10 +611,43 @@ img, .container, section, .card {
 .card:nth-child(3) { transition-delay: .16s; }
 .card:nth-child(4) { transition-delay: .24s; }
 
-.brand:hover { transform: translateX(4px); }
-.brand:hover .brand-mark { transform: scale(1.15) rotate(-5deg); filter: drop-shadow(0 4px 8px rgba(0,0,0,.35)); }
-.brand:hover .brand-text { transform: scale(1.03); letter-spacing: .02em; }
-.brand:hover .brand-name { color: var(--dourado) !important; text-shadow: 0 0 10px rgba(205,167,79,.35); }
+.brand {
+  transition: transform .3s ease;
+}
+.brand:hover {
+  transform: translateX(4px);
+}
 
-.home-hero-box-inner:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 12px 35px rgba(111, 22, 16, .55), inset 0 0 0 1px rgba(205,167,79,.3); border-color: var(--ouro-brilhante); }
-.home-hero-box-inner:hover h1 { color: var(--dourado-claro); text-shadow: 0 0 12px rgba(205,167,79,.4); }
+.brand-mark {
+  transition: transform .35s ease, filter .35s ease;
+}
+.brand:hover .brand-mark {
+  transform: scale(1.15) rotate(-5deg);
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,.35));
+}
+
+.brand-text {
+  transition: all .35s ease;
+}
+.brand:hover .brand-text {
+  transform: scale(1.03);
+  letter-spacing: .02em;
+}
+.brand:hover .brand-name {
+  color: var(--dourado) !important;
+  text-shadow: 0 0 10px rgba(205,167,79,.35);
+}
+
+.home-hero-box-inner {
+  transition: all .4s ease !important;
+}
+.home-hero-box-inner:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(111, 22, 16, .55), inset 0 0 0 1px rgba(205,167,79,.3);
+  border-color: var(--ouro-brilhante);
+}
+
+.home-hero-box-inner:hover h1 {
+  color: var(--dourado-claro);
+  text-shadow: 0 0 12px rgba(205,167,79,.4);
+}
