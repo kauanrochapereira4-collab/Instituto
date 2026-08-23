@@ -62,7 +62,7 @@ main{ margin-top:0; padding-top:0; }
 .brand{ 
   display:flex; align-items:center; gap:.9rem; 
   text-decoration:none;
-  margin-left: 2rem;
+  margin-left: 2rem; /* ← EMPURRA BRASÃO + NOME PARA A DIREITA */
 }
 
 .brand-mark{ 
@@ -81,7 +81,7 @@ main{ margin-top:0; padding-top:0; }
 .brand-text{ 
   display:flex; flex-direction:column; 
   line-height:1.2;
-  margin-top: 0.4rem;
+  margin-top: 0.4rem; /* ← NOME MAIS PARA BAIXO para alinhar com o brasão */
 }
 .brand-text .eyebrow-brand{ 
   display:block; 
@@ -181,7 +181,7 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
 }
 
 /* ==========================================================
-   HERO
+   HERO — CAIXA VERMELHA MENOR E TUDO LEGÍVEL
    ========================================================== */
 
 .home-hero {
@@ -238,11 +238,11 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
 
 .home-hero-box {
   position: absolute;
-  top: 78%;
+  top: 70%; /* ← MAIS EMBAIXO para não cobrir tudo */
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
-  width: min(540px, 90%);
+  width: min(520px, 94%); /* ← MENOR LARGURA */
   animation: fadeInUp 1s ease-out forwards;
   opacity: 0;
 }
@@ -263,8 +263,8 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   );
   color: #fff;
   text-align: center;
-  padding: 18px 20px;
-  border-radius: 14px;
+  padding: 12px 16px; /* ← MENOS ESPAÇO INTERNO */
+  border-radius: 10px;
   border: 1px solid var(--dourado);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(4px);
@@ -273,9 +273,9 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
 .home-hero-box-inner h1 {
   font-family: var(--display);
   color: #fff;
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  margin: 0 0 0.4rem;
-  letter-spacing: 0.03em;
+  font-size: clamp(0.9rem, 1.8vw, 1.1rem); /* ← FONTE MENOR */
+  margin: 0 0 0.3rem;
+  letter-spacing: 0.02em;
   line-height: 1.3;
   font-weight: 600;
   text-transform: uppercase;
@@ -285,19 +285,19 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   font-family: var(--serif);
   font-style: italic;
   color: var(--dourado-claro);
-  font-size: 0.92rem;
-  margin-bottom: 0.35rem;
-  line-height: 1.5;
+  font-size: 0.82rem; /* ← FONTE MENOR */
+  margin-bottom: 0.2rem;
+  line-height: 1.4;
 }
 
 .hero-meta {
   font-family: var(--serif);
   font-style: italic;
-  font-size: 0.8rem;
+  font-size: 0.72rem; /* ← FONTE MENOR */
   color: #e9d4b8;
   margin-bottom: 0;
   opacity: 0.92;
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
 /* --- Cartões: Prior Geral e Fundador --- */
@@ -435,7 +435,7 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
 }
 
 /* =====================================================
-   📱 RESPONSIVIDADE — SÓ arrumando a posição do quadrado
+   📱 RESPONSIVIDADE — Tudo proporcional
    ===================================================== */
 
 @media (max-width:980px){
@@ -493,7 +493,7 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
 }
 
 @media (max-width:640px){
-  /* --- CABEÇALHO --- */
+  /* --- CABEÇALHO — Empurrado para direita e alinhado --- */
   .header-bar {
     flex-wrap: nowrap;
     gap: 0.6rem;
@@ -502,7 +502,7 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
 
   .brand {
     gap: 0.6rem;
-    margin-left: 1.5rem;
+    margin-left: 1.5rem; /* ← EMPURRA PARA DIREITA no celular também */
   }
 
   .brand-mark {
@@ -512,7 +512,7 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
   }
 
   .brand-text {
-    margin-top: 0.3rem;
+    margin-top: 0.3rem; /* ← NOME MAIS PARA BAIXO no celular */
   }
 
   .brand-text .eyebrow-brand {
@@ -525,11 +525,33 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
     line-height: 1.2;
   }
 
-  /* --- ✅ ÚNICA MUDANÇA: Quadrado vermelho MAIS EMBAIXO para aparecer TUDO --- */
+  /* --- CAIXA VERMELHA — MENOR E TUDO LEGÍVEL --- */
   .home-hero-box {
-    top: 80% !important; /* ← só mudei este número, mais nada! */
-    width: 92% !important;
+    top: 70% !important;
+    width: 94% !important;
     transform: translate(-50%, -50%) !important;
+  }
+
+  .home-hero-box-inner {
+    padding: 10px 12px !important;
+    border-radius: 8px !important;
+  }
+
+  .home-hero-box-inner h1 {
+    font-size: 0.82rem !important;
+    margin-bottom: 0.25rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .hero-text {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.15rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .hero-meta {
+    font-size: 0.68rem !important;
+    line-height: 1.25 !important;
   }
 
   .priest-card, .founder-card {
