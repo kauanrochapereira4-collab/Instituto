@@ -439,7 +439,6 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
 @media (max-width:980px){
   .nav-toggle{ display:block; }
 
-  /* Menu lateral — mesma cor da barra */
   nav.primary-nav{
     position:fixed; top:0; right:0; bottom:0; width:min(320px,86%); height:100vh;
     background:var(--vinho-escuro);
@@ -450,13 +449,11 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
   }
   nav.primary-nav.open{ transform:translateX(0); }
 
-  /* Botão fechar */
   .nav-close{ display:block; }
 
   nav.primary-nav ul{ flex-direction:column; align-items:stretch; }
   nav.primary-nav > ul > li > a{ border-bottom:1px solid rgba(205,167,79,.15); }
 
-  /* Submenu no celular */
   .dropdown{ 
     position:static; 
     max-height:0; 
@@ -494,32 +491,57 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
 }
 
 @media (max-width:640px){
-  /* Cabeçalho proporcional */
   .header-bar {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 0.6rem;
-    padding: 0.8rem 0;
+    padding: 0.6rem 0;
   }
-  .brand-text .eyebrow-brand { font-size: 0.7rem; }
-  .brand-text .brand-name { font-size: 0.9rem; }
-  .brand-mark { width: 44px; height: 44px; }
 
-  /* Caixa da foto proporcional */
+  .brand {
+    gap: 0.6rem;
+  }
+
+  .brand-mark {
+    width: 40px !important;
+    height: 40px !important;
+    flex-shrink: 0;
+  }
+
+  .brand-text .eyebrow-brand {
+    font-size: 0.65rem;
+    line-height: 1.1;
+  }
+
+  .brand-text .brand-name {
+    font-size: 0.85rem;
+    line-height: 1.2;
+  }
+
   .home-hero-box {
-    top: 72%;
-    width: 92%;
+    top: 75% !important;
+    width: 92% !important;
+    transform: translate(-50%, -50%) !important;
   }
-  .home-hero-box-inner {
-    padding: 14px 16px;
-    border-radius: 12px;
-  }
-  .home-hero-box-inner h1 {
-    font-size: 1rem;
-  }
-  .hero-text { font-size: 0.85rem; }
-  .hero-meta { font-size: 0.75rem; }
 
-  /* Cartões do Padre e Fundador */
+  .home-hero-box-inner {
+    padding: 12px 15px !important;
+    border-radius: 10px !important;
+  }
+
+  .home-hero-box-inner h1 {
+    font-size: 0.9rem !important;
+    margin-bottom: 0.3rem !important;
+  }
+
+  .hero-text {
+    font-size: 0.8rem !important;
+    margin-bottom: 0.2rem !important;
+  }
+
+  .hero-meta {
+    font-size: 0.7rem !important;
+  }
+
   .priest-card, .founder-card {
     flex-direction: column;
     text-align: center;
@@ -532,20 +554,16 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
     height: 120px;
   }
 
-  /* Grids em 1 coluna */
   .grid-3 { grid-template-columns: 1fr; gap: 1.2rem; }
   .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
 
-  /* Espaçamento das seções */
   section { padding: 2rem 0; }
 
-  /* Botões proporcionais */
   .btn {
     padding: 0.65rem 1.2rem;
     font-size: 0.85rem;
   }
 
-  /* Rodapé */
   footer.site-footer { padding: 2rem 0 1.2rem; }
   .footer-bottom {
     flex-direction: column;
@@ -554,15 +572,11 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
   }
 }
 
-/* Garante que NADA estoura a tela */
 img, .container, section, .card {
   max-width: 100%;
   box-sizing: border-box;
 }
 
-/* =====================================================
-   ✨ BARRA DE NAVEGAÇÃO ao rolar
-   ===================================================== */
 .site-header.rolando {
   box-shadow: 0 3px 12px rgba(0,0,0,.25);
   background: rgba(89, 20, 20, .97) !important;
@@ -570,9 +584,6 @@ img, .container, section, .card {
   transition: all .2s ease;
 }
 
-/* =====================================================
-   ⚡ APARECER RÁPIDO
-   ===================================================== */
 .escondido-antes {
   opacity: 0;
   transform: translateY(15px);
@@ -584,14 +595,10 @@ img, .container, section, .card {
   transform: translateY(0);
 }
 
-/* Cards aparecem em sequência */
 .card:nth-child(2) { transition-delay: .08s; }
 .card:nth-child(3) { transition-delay: .16s; }
 .card:nth-child(4) { transition-delay: .24s; }
 
-/* =====================================================
-   🛡️ BRASÃO + NOME AO LADO — efeitos
-   ===================================================== */
 .brand {
   transition: transform .3s ease;
 }
@@ -619,9 +626,6 @@ img, .container, section, .card {
   text-shadow: 0 0 10px rgba(205,167,79,.35);
 }
 
-/* =====================================================
-   📦 CAIXA DA FOTO — efeitos
-   ===================================================== */
 .home-hero-box-inner {
   transition: all .4s ease !important;
 }
