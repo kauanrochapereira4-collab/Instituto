@@ -559,4 +559,42 @@ footer.site-footer a:hover{ color:var(--dourado-claro); transition:.2s ease; }
 .apareceu {
   opacity: 1;
   transform: translateY(0);
+}/* ✅ ANIMAÇÃO DO BRASÃO E NOME — AO PASSAR O MOUSE */
+.brand {
+  transition: transform 0.3s ease !important;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-decoration: none;
+}
+
+/* Ao passar o mouse, o conjunto desliza um pouquinho */
+.brand:hover {
+  transform: translateX(4px) !important;
+}
+
+/* Brasão: gira e cresce com brilho */
+.brand .brand-mark {
+  transition: transform 0.35s ease, filter 0.35s ease !important;
+  transform-origin: center center;
+}
+
+.brand:hover .brand-mark {
+  transform: scale(1.15) rotate(-5deg) !important;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.35)) !important;
+}
+
+/* Texto: cresce um pouquinho e muda a cor */
+.brand .brand-text {
+  transition: all 0.35s ease !important;
+}
+
+.brand:hover .brand-text {
+  transform: scale(1.03) !important;
+  letter-spacing: 0.02em !important;
+}
+
+.brand:hover .brand-name {
+  color: var(--dourado) !important;
+  text-shadow: 0 0 10px rgba(205, 167, 79, 0.35) !important;
 }
