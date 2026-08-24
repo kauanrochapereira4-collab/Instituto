@@ -44,6 +44,7 @@ p{ margin:0 0 1em; }
 :focus-visible{ outline:3px solid var(--dourado); outline-offset:3px; }
 main{ margin-top:0; padding-top:0; }
 @media (prefers-reduced-motion: reduce){ *{ animation-duration:.001ms !important; transition-duration:.001ms !important; } }
+
 /* --- Cabeçalho / Navegação --- */
 .site-header{
   position:sticky; top:0; z-index:50;
@@ -118,6 +119,7 @@ nav.primary-nav > ul > li.has-dropdown > a::after{
 nav.primary-nav > ul > li.has-dropdown.open > a::after{
   transform:rotate(180deg);
 }
+
 /* --- Dropdown — Abre SÓ ao Clicar --- */
 .dropdown{
   position:absolute; top:100%; left:0; min-width:260px; 
@@ -145,7 +147,9 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   border-left-color:var(--dourado);
   padding-left:1.4rem;
 }
+
 .nav-toggle{ display:none; background:none; border:1px solid rgba(243,215,163,.4); padding:.5rem .65rem; font-size:1.1rem; color:#f1e4cc; cursor:pointer; }
+
 /* --- Botão Fechar no Menu Lateral --- */
 .nav-close{
   display:none;
@@ -165,6 +169,7 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   background:var(--dourado);
   color:var(--vinho-escuro);
 }
+
 /* ==========================================================
    HERO — CAIXA VERMELHA MENOR E TUDO LEGÍVEL
    ========================================================== */
@@ -274,6 +279,7 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   opacity: 0.92;
   line-height: 1.3;
 }
+
 /* --- Cartões: Prior Geral e Fundador --- */
 .prior-message{ padding-top:0; }
 .priest-card, .founder-card{
@@ -310,6 +316,7 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   letter-spacing:.02em; color:var(--marrom); margin-bottom:.3rem; 
 }
 .founder-sub{ font-size:.85rem; color:#777; margin-top:.2rem; }
+
 /* --- Seções e Grades --- */
 section{ padding:4rem 0; }
 .section-block{ padding-top:1rem; }
@@ -323,6 +330,7 @@ section{ padding:4rem 0; }
 .card:hover{ transform:translateY(-4px); box-shadow:0 5px 15px rgba(67,40,24,.18); }
 .card h3{ font-size:1.08rem; color:var(--marrom); margin-bottom:.8rem; }
 .card p{ font-size:.95rem; line-height:1.6; }
+
 /* --- Botões --- */
 .btn{
   display:inline-block; font-family:var(--ui); font-weight:600; font-size:.88rem; letter-spacing:.01em;
@@ -338,6 +346,7 @@ section{ padding:4rem 0; }
   background:linear-gradient(135deg, var(--ouro-brilhante) 0%, var(--dourado) 100%); 
   color:var(--marrom); 
 }
+
 /* --- Rodapé --- */
 footer.site-footer{ 
   background:var(--vinho); color:#e9d4b8; padding:3.2rem 0 1.6rem; 
@@ -358,6 +367,7 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
   font-family:var(--ui); font-size:.78rem; color:#e9d4b8; 
   display:flex; justify-content:space-between; flex-wrap:wrap; gap:.6rem; 
 }
+
 /* =====================================================
    📱 ÍCONES DAS REDES SOCIAIS
    ===================================================== */
@@ -391,8 +401,9 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
 .social-row a:hover {
   transform: scale(1.15);
 }
+
 /* =====================================================
-   📱 RESPONSIVIDADE — Tudo proporcional
+   📱 RESPONSIVIDADE — MENU FECHADO POR PADRÃO NO CELULAR
    ===================================================== */
 @media (max-width:980px){
   .nav-toggle{ display:block; }
@@ -400,12 +411,17 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
     position:fixed; top:0; right:0; bottom:0; width:min(320px,86%); height:100vh;
     background:var(--vinho-escuro);
     flex-direction:column; align-items:stretch;
-    transform:translateX(100%) !important; /* MENU SEMPRE FECHADO AO ABRIR */
-    transition:transform .25s ease; 
+    transform:translateX(100%); /* ✅ MENU ESCONDIDO TOTALMENTE À DIREITA */
+    visibility: hidden; /* ✅ NÃO APARECE NADA ANTES DO CLIQUE */
+    transition:transform .25s ease, visibility .25s ease; 
     padding:5rem 1.2rem 2rem;
     box-shadow:var(--sombra); overflow:auto;
   }
-  nav.primary-nav.open{ transform:translateX(0); }
+  /* ✅ SÓ ABRE QUANDO CLICA NO BOTÃO */
+  nav.primary-nav.open{ 
+    transform:translateX(0); 
+    visibility: visible;
+  }
   .nav-close{ display:block; }
   nav.primary-nav ul{ flex-direction:column; align-items:stretch; }
   nav.primary-nav > ul > li > a{ border-bottom:1px solid rgba(205,167,79,.15); }
@@ -438,10 +454,12 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
     border-left-color:var(--dourado);
   }
 }
+
 @media (max-width:860px){ 
   .grid-3{ grid-template-columns:1fr 1fr; } 
   .footer-grid{ grid-template-columns:1fr 1fr; } 
 }
+
 @media (max-width:640px){
   .header-bar { flex-wrap: nowrap; gap: 0.6rem; padding: 0.6rem 0; }
   .brand { gap: 0.6rem; margin-left: 1.5rem; }
@@ -463,16 +481,19 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
   footer.site-footer { padding: 2rem 0 1.2rem; }
   .footer-bottom { flex-direction: column; text-align: center; gap: 0.5rem; }
 }
+
 img, .container, section, .card {
   max-width: 100%;
   box-sizing: border-box;
 }
+
 .site-header.rolando {
   box-shadow: 0 3px 12px rgba(0,0,0,.25);
   background: rgba(89, 20, 20, .97) !important;
   backdrop-filter: blur(6px);
   transition: all .2s ease;
 }
+
 .escondido-antes {
   opacity: 0;
   transform: translateY(15px);
@@ -482,9 +503,11 @@ img, .container, section, .card {
   opacity: 1;
   transform: translateY(0);
 }
+
 .card:nth-child(2) { transition-delay: .08s; }
 .card:nth-child(3) { transition-delay: .16s; }
 .card:nth-child(4) { transition-delay: .24s; }
+
 .brand { transition: transform .3s ease; }
 .brand:hover { transform: translateX(4px); }
 .brand-mark { transition: transform .35s ease, filter .35s ease; }
@@ -492,6 +515,7 @@ img, .container, section, .card {
 .brand-text { transition: all .35s ease; }
 .brand:hover .brand-text { transform: scale(1.03); letter-spacing: .02em; }
 .brand:hover .brand-name { color: var(--dourado) !important; text-shadow: 0 0 10px rgba(205,167,79,.35); }
+
 .home-hero-box-inner { transition: all .4s ease !important; }
 .home-hero-box-inner:hover {
   transform: translateY(-8px) scale(1.02);
