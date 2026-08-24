@@ -20,7 +20,14 @@
   --display:        "Cinzel", var(--serif);
   --ui:             "Montserrat", "Helvetica Neue", Arial, sans-serif;
 }
-*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+*,*::before,*::after{ 
+  box-sizing:border-box; 
+  margin:0; 
+  padding:0; 
+}
+html, body {
+  overflow-x: hidden; /* ✅ IMPOSSÍVEL ARRASTAR PARA O LADO */
+}
 html{ scroll-behavior:smooth; }
 body{
   margin:0;
@@ -403,24 +410,32 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
 }
 
 /* =====================================================
-   📱 RESPONSIVIDADE — MENU FECHADO POR PADRÃO NO CELULAR
+   📱 RESPONSIVIDADE — MENU TOTALMENTE ESCONDIDO
    ===================================================== */
 @media (max-width:980px){
   .nav-toggle{ display:block; }
   nav.primary-nav{
-    position:fixed; top:0; right:0; bottom:0; width:min(320px,86%); height:100vh;
+    position:fixed; 
+    top:0; 
+    right:0; 
+    bottom:0; 
+    width:min(320px,86%); 
+    height:100vh;
     background:var(--vinho-escuro);
-    flex-direction:column; align-items:stretch;
-    transform:translateX(100%); /* ✅ MENU ESCONDIDO TOTALMENTE À DIREITA */
-    visibility: hidden; /* ✅ NÃO APARECE NADA ANTES DO CLIQUE */
+    flex-direction:column; 
+    align-items:stretch;
+    transform:translateX(105%); /* ✅ MANDA PRA FORA DA TELA COMPLETA */
+    visibility: hidden; /* ✅ INVISÍVEL */
     transition:transform .25s ease, visibility .25s ease; 
     padding:5rem 1.2rem 2rem;
-    box-shadow:var(--sombra); overflow:auto;
+    box-shadow:none; /* ✅ TIRA A SOMBRA QUE APARECIA */
+    overflow:hidden; /* ✅ CORTA TUDO QUE SAIU */
   }
-  /* ✅ SÓ ABRE QUANDO CLICA NO BOTÃO */
+  /* ✅ SÓ APARECE QUANDO CLICA */
   nav.primary-nav.open{ 
     transform:translateX(0); 
     visibility: visible;
+    box-shadow: -5px 0 20px rgba(0,0,0,.3);
   }
   .nav-close{ display:block; }
   nav.primary-nav ul{ flex-direction:column; align-items:stretch; }
