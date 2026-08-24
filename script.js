@@ -1,25 +1,42 @@
 // =====================================================
-// 🏠 BARRA DE NAVEGAÇÃO — Abre/fecha menu
+// 🏠 BARRA DE NAVEGAÇÃO — Abre/fecha menu + TRAVA PÁGINA
 // =====================================================
 const navToggle = document.querySelector('.nav-toggle');
 const navClose = document.querySelector('.nav-close');
 const primaryNav = document.querySelector('.primary-nav');
 const siteHeader = document.querySelector('.site-header');
+const body = document.body;
 
-// ABRIR menu ao clicar no botão ☰
+// ABRIR menu ao clicar no botão ☰ — TRAVA a página
 if (navToggle && primaryNav) {
   navToggle.onclick = function () {
     primaryNav.classList.add('open');
+    body.classList.add('menu-aberto'); // ✅ TRAVA o fundo
   };
 }
 
-// FECHAR menu ao clicar no ✕
+// FECHAR menu ao clicar no ✕ — DESTRAVA
 if (navClose && primaryNav) {
   navClose.onclick = function () {
     primaryNav.classList.remove('open');
+    body.classList.remove('menu-aberto'); // ✅ DESTRAVA
     fecharTodos();
   };
 }
+
+// ✅ FECHA menu ao clicar em QUALQUER item de link
+document.addEventListener('click', function (e) {
+  const linkItem = e.target.closest('nav.primary-nav a');
+  if (linkItem && primaryNav.classList.contains('open')) {
+    const isDropdownTrigger = linkItem.classList.contains('dropdown-trigger') || 
+                              linkItem.closest('.has-dropdown');
+    if (!isDropdownTrigger || !linkItem.getAttribute('href')?.startsWith('#')) {
+      primaryNav.classList.remove('open');
+      body.classList.remove('menu-aberto');
+      fecharTodos();
+    }
+  }
+});
 
 // 🖱️ COMPUTADOR: passa o mouse → abre submenu
 document.addEventListener('mouseover', function (e) {
@@ -31,7 +48,6 @@ document.addEventListener('mouseover', function (e) {
     }
   }
 });
-
 document.addEventListener('mouseout', function (e) {
   if (window.innerWidth > 980) {
     var item = e.target.closest('.has-dropdown');
@@ -83,7 +99,6 @@ const observador = new IntersectionObserver((entradas) => {
     }
   });
 }, { threshold: 0.08 });
-
 document.querySelectorAll('section, .card, .priest-card, .founder-card, .grid').forEach(el => {
   el.classList.add('escondido-antes');
   observador.observe(el);
