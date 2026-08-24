@@ -6,12 +6,15 @@ const navClose = document.querySelector('.nav-close');
 const primaryNav = document.querySelector('.primary-nav');
 const siteHeader = document.querySelector('.site-header');
 
+// ABRIR menu ao clicar no botão ☰
 if (navToggle && primaryNav) {
   navToggle.onclick = function () {
     primaryNav.classList.add('open');
   };
 }
-if (navClose && primaryNav && navToggle) {
+
+// FECHAR menu ao clicar no ✕
+if (navClose && primaryNav) {
   navClose.onclick = function () {
     primaryNav.classList.remove('open');
     fecharTodos();
@@ -28,6 +31,7 @@ document.addEventListener('mouseover', function (e) {
     }
   }
 });
+
 document.addEventListener('mouseout', function (e) {
   if (window.innerWidth > 980) {
     var item = e.target.closest('.has-dropdown');
@@ -59,15 +63,17 @@ document.addEventListener('click', function (e) {
 // ✨ BARRA DE NAVEGAÇÃO — muda estilo ao descer
 // =====================================================
 window.addEventListener('scroll', function () {
-  if (window.scrollY > 60) {
-    siteHeader.classList.add('rolando');
-  } else {
-    siteHeader.classList.remove('rolando');
+  if (siteHeader) {
+    if (window.scrollY > 60) {
+      siteHeader.classList.add('rolando');
+    } else {
+      siteHeader.classList.remove('rolando');
+    }
   }
 });
 
 // =====================================================
-// ⚡ ELEMENTOS APARECENDO — MUITO MAIS RÁPIDO
+// ⚡ ELEMENTOS APARECENDO ao descer a página
 // =====================================================
 const observador = new IntersectionObserver((entradas) => {
   entradas.forEach(entrada => {
@@ -90,6 +96,9 @@ var ano = new Date().getFullYear();
 var anoEl = document.querySelector('.js-year');
 if (anoEl) anoEl.textContent = ano;
 
+// =====================================================
+// 🔒 FECHA TODOS os submenus
+// =====================================================
 function fecharTodos() {
   document.querySelectorAll('.has-dropdown').forEach(item => {
     item.classList.remove('open');
