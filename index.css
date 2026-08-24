@@ -25,9 +25,14 @@
   margin:0; 
   padding:0; 
 }
+
+/* ✅ TRAVA TOTALMENTE A PÁGINA — NÃO DÁ PRA IR PARA O LADO */
 html, body {
-  overflow-x: hidden; /* ✅ IMPOSSÍVEL ARRASTAR PARA O LADO */
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100vw !important;
 }
+
 html{ scroll-behavior:smooth; }
 body{
   margin:0;
@@ -58,10 +63,13 @@ main{ margin-top:0; padding-top:0; }
   background:var(--vinho-escuro);
   border-bottom:2px solid var(--dourado);
   margin-bottom:0;
+  width:100%;
+  max-width:100vw;
 }
 .header-bar{
   display:flex; align-items:center; justify-content:space-between;
   gap:1.5rem; padding:.6rem 0;
+  width:100%;
 }
 .brand{ 
   display:flex; align-items:center; gap:.9rem; 
@@ -183,6 +191,7 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
 .home-hero {
   position: relative;
   width: 100%;
+  max-width: 100vw;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -325,14 +334,16 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
 .founder-sub{ font-size:.85rem; color:#777; margin-top:.2rem; }
 
 /* --- Seções e Grades --- */
-section{ padding:4rem 0; }
+section{ padding:4rem 0; width:100%; max-width:100vw; }
 .section-block{ padding-top:1rem; }
-.grid{ display:grid; gap:1.8rem; }
+.grid{ display:grid; gap:1.8rem; width:100%; }
 .grid-3{ grid-template-columns:repeat(3,1fr); }
 .card{
   background:#fff; border:none; border-radius:8px; padding:1.6rem;
   box-shadow:0 3px 10px rgba(67,40,24,.10); border-top:4px solid var(--dourado);
   transition:transform .3s ease, box-shadow .3s ease;
+  width:100%;
+  box-sizing:border-box;
 }
 .card:hover{ transform:translateY(-4px); box-shadow:0 5px 15px rgba(67,40,24,.18); }
 .card h3{ font-size:1.08rem; color:var(--marrom); margin-bottom:.8rem; }
@@ -358,6 +369,8 @@ section{ padding:4rem 0; }
 footer.site-footer{ 
   background:var(--vinho); color:#e9d4b8; padding:3.2rem 0 1.6rem; 
   border-top:4px solid var(--dourado); margin-top:2rem; 
+  width:100%;
+  max-width:100vw;
 }
 footer.site-footer h4{ 
   color:var(--dourado); font-size:1rem; letter-spacing:.02em; 
@@ -424,14 +437,13 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
     background:var(--vinho-escuro);
     flex-direction:column; 
     align-items:stretch;
-    transform:translateX(105%); /* ✅ MANDA PRA FORA DA TELA COMPLETA */
-    visibility: hidden; /* ✅ INVISÍVEL */
+    transform:translateX(105%);
+    visibility: hidden;
     transition:transform .25s ease, visibility .25s ease; 
     padding:5rem 1.2rem 2rem;
-    box-shadow:none; /* ✅ TIRA A SOMBRA QUE APARECIA */
-    overflow:hidden; /* ✅ CORTA TUDO QUE SAIU */
+    box-shadow:none;
+    overflow:hidden;
   }
-  /* ✅ SÓ APARECE QUANDO CLICA */
   nav.primary-nav.open{ 
     transform:translateX(0); 
     visibility: visible;
