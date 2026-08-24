@@ -1,5 +1,8 @@
 /* ==========================================================================
-   Instituto Missionário Servos de Jesus Salvador — Página Inicial ARRUMADA
+   Instituto Missionário Servos de Jesus Salvador
+   ✅ Só Página Inicial arrumada
+   ✅ Menu travado — não desce a página de fundo
+   ✅ Fecha ao clicar no X ou em um item
    ========================================================================== */
 :root{
   --vinho:          #6F1610;
@@ -22,14 +25,21 @@
   padding:0; 
 }
 
-/* ✅ TRAVA TUDO — SEM ZOOM, SEM ARRASTAR PARA O LADO */
+/* ✅ TRAVA LARGURA + SEM ZOOM */
 html, body {
   overflow-x: hidden !important;
   width: 100% !important;
   max-width: 100vw !important;
   margin: 0 !important;
   padding: 0 !important;
-  touch-action: pan-y; /* ✅ SÓ SOBE E DESCE — NÃO DÁ ZOOM */
+  touch-action: pan-y;
+}
+
+/* ✅ TRAVA O CORPO QUANDO O MENU ESTÁ ABERTO — NÃO DESCE A PÁGINA */
+body.menu-aberto {
+  overflow: hidden !important;
+  position: fixed !important;
+  width: 100% !important;
 }
 
 html{ scroll-behavior:smooth; }
@@ -37,7 +47,7 @@ body{
   font-family:var(--serif);
   color:var(--tinta);
   background:var(--creme);
-  line-height:1.7; /* ✅ TEXTO AREJADO */
+  line-height:1.7;
   -webkit-font-smoothing:antialiased;
 }
 img{ 
@@ -56,7 +66,7 @@ h1,h2,h3,h4{
 }
 p{ margin:0 0 1.4em; }
 
-/* ✅ LARGURA BOA — NÃO GRUDA NAS BORDAS */
+/* ✅ LARGURA E ESPAÇO — NÃO GRUDA NAS BORDAS */
 .container{ 
   width:min(1120px, 90%); 
   margin:0 auto; 
@@ -149,11 +159,12 @@ nav.primary-nav > ul > li.has-dropdown > a::after{
   display:none; position:absolute; top:1rem; right:1rem;
   background:transparent; border:1px solid var(--dourado); color:var(--dourado);
   font-size:1rem; padding:.4rem .8rem; border-radius:6px; cursor:pointer;
+  z-index:200;
 }
 .nav-close:hover{ background:var(--dourado); color:var(--vinho-escuro); }
 
 /* ==========================================================
-   🎯 HERO — PÁGINA INICIAL ARRUMADA
+   🎯 PÁGINA INICIAL — ARRUMADA, ESPAÇADA E BONITA
    ========================================================== */
 .home-hero {
   position: relative;
@@ -167,7 +178,7 @@ nav.primary-nav > ul > li.has-dropdown > a::after{
 .home-hero-photo {
   position: relative;
   width: 100%;
-  padding-top: 50%; /* ✅ TAMANHO BOM DA IMAGEM */
+  padding-top: 50%;
   overflow: hidden;
   border-bottom-left-radius: 50% 12%;
   border-bottom-right-radius: 50% 12%;
@@ -178,7 +189,7 @@ nav.primary-nav > ul > li.has-dropdown > a::after{
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* ✅ IMAGEM APARECE INTEIRA */
+  object-fit: cover;
   object-position: center;
 }
 .home-hero-photo::after {
@@ -193,7 +204,7 @@ nav.primary-nav > ul > li.has-dropdown > a::after{
   border-bottom-right-radius: 50% 12%;
 }
 
-/* ✅ CAIXA DO TEXTO — TAMANHO BOM E VISÍVEL */
+/* ✅ Caixa do título */
 .home-hero-box {
   position: absolute;
   top: 70%;
@@ -206,7 +217,7 @@ nav.primary-nav > ul > li.has-dropdown > a::after{
   background: linear-gradient(145deg, rgba(90, 16, 22, 0.88), rgba(60, 10, 15, 0.92));
   color: #fff;
   text-align: center;
-  padding: 1.5rem 1.8rem; /* ✅ ESPAÇO INTERNO BOM */
+  padding: 1.5rem 1.8rem;
   border-radius: 12px;
   border: 2px solid var(--dourado);
   box-shadow: 0 8px 30px rgba(0,0,0,.4);
@@ -235,91 +246,59 @@ nav.primary-nav > ul > li.has-dropdown > a::after{
   opacity: 0.95;
 }
 
-/* ==========================================================
-   📄 SEÇÕES DA PÁGINA INICIAL — ESPAÇO E TAMANHO CERTO
-   ========================================================== */
-section { 
-  padding: 3.5rem 1.2rem; /* ✅ ESPAÇO GRANDE ENTRE AS SEÇÕES */
+/* ✅ Seção do Prior Geral — espaçada e bonita */
+section.home-secao { 
+  padding: 3rem 1.2rem;
   width: 100%; 
   max-width: 100vw; 
   overflow: hidden;
 }
 
-/* ✅ TEXTO DAS SEÇÕES — NÃO GRUDADO E LEGÍVEL */
-.section-text {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--tinta);
-  margin-bottom: 1.5rem;
-  padding: 0;
-}
-
-/* ✅ IMAGENS DAS SEÇÕES — APARECEM INTEIRAS E COM ESPAÇO */
-.section-image-box {
-  width: 100%;
-  max-width: 700px;
-  margin: 1.5rem auto;
-  border: 2px dashed var(--dourado);
-  border-radius: 10px;
-  padding: 1.5rem;
-  background: rgba(239, 221, 184, 0.3);
+/* ✅ Cartão do Prior — como na foto, bem visível */
+.prior-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(67,40,24,.12);
+  padding: 2rem;
+  border-left: 4px solid var(--dourado);
+  border-right: 4px solid var(--dourado);
+  max-width: 600px;
+  margin: 0 auto;
   text-align: center;
 }
-.section-image-box img {
-  width: 100%;
+.prior-foto {
+  width: 160px;
   height: auto;
-  border-radius: 6px;
-  margin-bottom: 0.8rem;
+  border-radius: 10px;
+  border: 4px solid var(--dourado-claro);
+  box-shadow: 0 3px 10px rgba(0,0,0,.15);
+  margin: 0 auto 1.5rem;
 }
-.section-image-caption {
+.prior-titulo {
+  font-family: var(--display);
+  color: var(--marrom);
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px dotted var(--dourado-claro);
+  line-height: 1.4;
+}
+.prior-citacao {
   font-family: var(--serif);
   font-style: italic;
-  font-size: 0.9rem;
-  color: var(--tinta-suave);
+  font-size: 1.1rem;
+  color: var(--marrom);
+  padding: 1.5rem;
+  border-left: 4px solid var(--dourado);
+  background: linear-gradient(90deg, rgba(205,167,79,.12) 0%, transparent 100%);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
 }
-
-/* --- Cartões --- */
-.priest-card, .founder-card{
-  display:flex; gap:1.5rem; align-items:flex-start; background:#fff;
-  padding:1.8rem; border-radius:10px; box-shadow:0 3px 12px rgba(67,40,24,.12);
-  border-top:1px solid var(--dourado-claro);
-  width: 100%;
-}
-.priest-card{ border-left:5px solid var(--dourado); }
-.founder-card{ border-left:5px solid var(--marrom); background:linear-gradient(90deg,#fff9f5 0%,#ffffff 100%); }
-.priest-photo, .founder-photo{
-  width:140px; flex:none; border-radius:8px; overflow:hidden;
-  border:3px solid var(--dourado-claro);
-}
-.priest-photo img, .founder-photo img{ width:100%; height:auto; }
-.priest-content h3{
-  color:var(--marrom); font-family:var(--display); font-size:1.15rem; margin-bottom:1rem;
-  padding-bottom:.5rem; border-bottom:2px dotted var(--dourado-claro);
-}
-.priest-content p{ margin-bottom:1rem; font-size:.98rem; line-height:1.7; }
-
-/* --- Grids --- */
-.grid{ display:grid; gap:2rem; width:100%; }
-.grid-3{ grid-template-columns:repeat(3,1fr); }
-.card{
-  background:#fff; border:none; border-radius:10px; padding:1.8rem;
-  box-shadow:0 3px 12px rgba(67,40,24,.10); border-top:4px solid var(--dourado);
-  transition:transform .3s ease;
-}
-.card:hover{ transform:translateY(-4px); }
-.card h3{ font-size:1.08rem; color:var(--marrom); margin-bottom:1rem; }
-.card p{ font-size:.95rem; line-height:1.7; }
-
-/* --- Botões --- */
-.btn{
-  display:inline-block; font-family:var(--ui); font-weight:600; font-size:.88rem;
-  padding:.75rem 1.4rem; border:none; border-radius:6px; color:#fff; background:var(--marrom);
-  transition:all .3s ease;
-}
-.btn:hover{ background:#5a3622; }
-.btn-gold{ 
-  background:linear-gradient(135deg, var(--dourado) 0%, var(--ouro-brilhante) 100%); 
-  color:var(--marrom); font-weight:700; 
+.prior-texto {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--tinta);
+  text-align: left;
 }
 
 /* --- Rodapé --- */
@@ -342,29 +321,64 @@ footer.site-footer p{ font-size:.9rem; line-height:1.7; }
 }
 
 /* =====================================================
-   📱 CELULAR — TUDO AJUSTADO E VISÍVEL
+   📱 CELULAR — MENU TRAVADO + FECHA SÓ NO X OU ITEM
    ===================================================== */
 @media (max-width:980px){
   .nav-toggle{ display:block; }
   nav.primary-nav{
-    position:fixed; top:0; right:0; bottom:0;
-    width:min(320px,86%); height:100vh;
+    position:fixed; 
+    top:0; 
+    right:0; 
+    bottom:0; 
+    width:min(320px,86%); 
+    height:100vh;
     background:var(--vinho-escuro);
-    flex-direction:column; align-items:stretch;
-    transform:translateX(105%); visibility:hidden;
-    transition:transform .25s ease, visibility .25s ease;
-    padding:5rem 1.2rem 2rem; overflow:hidden;
+    flex-direction:column; 
+    align-items:stretch;
+    transform:translateX(105%);
+    visibility: hidden;
+    transition:transform .25s ease, visibility .25s ease; 
+    padding:5rem 1.2rem 2rem;
+    box-shadow:none;
+    overflow-y: auto; /* ✅ SÓ O MENU DESCE — A PÁGINA NÃO */
+    z-index:999;
   }
-  nav.primary-nav.open{ transform:translateX(0); visibility:visible; box-shadow:-5px 0 20px rgba(0,0,0,.3); }
+  nav.primary-nav.open{ 
+    transform:translateX(0); 
+    visibility: visible;
+    box-shadow: -5px 0 20px rgba(0,0,0,.3);
+  }
   .nav-close{ display:block; }
-  nav.primary-nav ul{ flex-direction:column; }
-  .dropdown{ position:static; max-height:0; opacity:0; visibility:hidden; overflow:hidden; transition:all .25s ease; }
-  .has-dropdown.open .dropdown{ max-height:500px; opacity:1; visibility:visible; }
-}
-
-@media (max-width:860px){ 
-  .grid-3{ grid-template-columns:1fr 1fr; } 
-  .footer-grid{ grid-template-columns:1fr 1fr; } 
+  nav.primary-nav ul{ flex-direction:column; align-items:stretch; }
+  nav.primary-nav > ul > li > a{ border-bottom:1px solid rgba(205,167,79,.15); }
+  .dropdown{ 
+    position:static; 
+    max-height:0; 
+    opacity:0; 
+    visibility:hidden; 
+    transform:translateY(0); 
+    box-shadow:none; 
+    border:none; 
+    background:rgba(0,0,0,.15);
+    padding-left:.8rem; 
+    padding-top:0; 
+    margin:0;
+    overflow:hidden;
+    transition:max-height .25s ease, opacity .2s ease, padding .25s ease;
+  }
+  .has-dropdown.open .dropdown{ 
+    max-height:500px; 
+    opacity:1; 
+    visibility:visible; 
+    padding-top:.5rem;
+  }
+  .has-dropdown > a::after{ float:right; }
+  .dropdown a{ color:#f1e4cc; border-left-color:transparent; }
+  .dropdown a:hover{ 
+    background:rgba(205,167,79,.25); 
+    color:#fff; 
+    border-left-color:var(--dourado);
+  }
 }
 
 @media (max-width:640px){
@@ -374,9 +388,10 @@ footer.site-footer p{ font-size:.9rem; line-height:1.7; }
   .home-hero-box-inner { padding: 1.2rem !important; }
   .home-hero-box-inner h1 { font-size: 1rem !important; }
   .hero-text { font-size: 0.85rem !important; }
-  section { padding: 2.5rem 1.2rem; }
-  .priest-card, .founder-card { flex-direction: column; text-align: center; gap: 1.2rem; padding: 1.5rem; }
-  .priest-photo, .founder-photo { margin: 0 auto; width: 130px; }
-  .grid-3 { grid-template-columns: 1fr; gap: 1.5rem; }
+  section.home-secao { padding: 2.5rem 1.2rem; }
+  .prior-card { padding: 1.5rem; }
+  .prior-titulo { font-size: 1.2rem; }
+  .prior-citacao { padding: 1.2rem; font-size: 1rem; }
+  .prior-foto { width: 140px; }
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
 }
