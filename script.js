@@ -9,19 +9,19 @@ const body = document.body;
 
 // ABRIR menu ao clicar no botão ☰ — TRAVA a página
 if (navToggle && primaryNav) {
-  navToggle.onclick = function () {
+  navToggle.addEventListener('click', function () {
     primaryNav.classList.add('open');
     body.classList.add('menu-aberto'); // ✅ TRAVA o fundo
-  };
+  });
 }
 
 // FECHAR menu ao clicar no ✕ — DESTRAVA
 if (navClose && primaryNav) {
-  navClose.onclick = function () {
+  navClose.addEventListener('click', function () {
     primaryNav.classList.remove('open');
     body.classList.remove('menu-aberto'); // ✅ DESTRAVA
     fecharTodos();
-  };
+  });
 }
 
 // ✅ FECHA menu ao clicar em QUALQUER item de link
@@ -43,16 +43,21 @@ document.addEventListener('mouseover', function (e) {
   if (window.innerWidth > 980) {
     var item = e.target.closest('.has-dropdown');
     if (item) {
-      fecharTodos();
+      // Não fecha se passar entre itens rapidamente
+      clearTimeout(window._fecharTimer);
       item.classList.add('open');
     }
   }
 });
+
 document.addEventListener('mouseout', function (e) {
   if (window.innerWidth > 980) {
     var item = e.target.closest('.has-dropdown');
     if (item) {
-      item.classList.remove('open');
+      // Pequeno atraso para não fechar acidentalmente
+      window._fecharTimer = setTimeout(() => {
+        item.classList.remove('open');
+      }, 150);
     }
   }
 });
@@ -65,6 +70,7 @@ document.addEventListener('click', function (e) {
       e.preventDefault();
       var item = trigger.closest('.has-dropdown');
       if (!item) return;
+      
       if (item.classList.contains('open')) {
         item.classList.remove('open');
       } else {
@@ -99,17 +105,19 @@ const observador = new IntersectionObserver((entradas) => {
     }
   });
 }, { threshold: 0.08 });
-document.querySelectorAll('section, .card, .priest-card, .founder-card, .grid').forEach(el => {
-  el.classList.add('escondido-antes');
-  observador.observe(el);
-});
 
-// =====================================================
-// 📅 Ano no rodapé
-// =====================================================
-var ano = new Date().getFullYear();
-var anoEl = document.querySelector('.js-year');
-if (anoEl) anoEl.textContent = ano;
+// Aguarda o HTML carregar antes de observar os elementos
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('section, .card, .priest-card, .founder-card, .grid').forEach(el => {
+    el.classList.add('escondido-antes');
+    observador.observe(el);
+  });
+  
+  // 📅 Ano no rodapé
+  var ano = new Date().getFullYear();
+  var anoEl = document.querySelector('.js-year');
+  if (anoEl) anoEl.textContent = ano;
+});
 
 // =====================================================
 // 🔒 FECHA TODOS os submenus
