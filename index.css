@@ -1,7 +1,3 @@
-/* ==========================================================================
-   Instituto Missionário Servos de Jesus Salvador — CSS COMPLETO FINAL
-   ✅ Caixa ESCONDIDA no celular | ✅ Visível no PC | ✅ Imagens sem deformar
-   ========================================================================== */
 :root{
   --vinho:          #6F1610;
   --vinho-escuro:   #591414;
@@ -25,8 +21,6 @@
   margin:0; 
   padding:0; 
 }
-
-/* ✅ TRAVA LARGURA + SEM ZOOM + TRAVA FUNDO QUANDO MENU ABERTO */
 html, body {
   overflow-x: hidden !important;
   width: 100% !important;
@@ -35,13 +29,12 @@ html, body {
   padding: 0 !important;
   touch-action: pan-y;
 }
-
 body.menu-aberto {
   overflow: hidden !important;
   position: fixed !important;
   width: 100% !important;
+  height: 100vh !important;
 }
-
 html{ scroll-behavior:smooth; }
 body{
   font-family:var(--serif);
@@ -50,8 +43,6 @@ body{
   line-height:1.7;
   -webkit-font-smoothing:antialiased;
 }
-
-/* ✅ IMAGENS — NÃO DEFORMAM NUNCA! */
 img{ 
   max-width:100% !important; 
   width: auto !important;
@@ -59,7 +50,6 @@ img{
   display:block;
   object-fit: contain !important;
 }
-
 a{ color:inherit; text-decoration:none; }
 h1,h2,h3,h4{ 
   font-family:var(--ui); 
@@ -69,27 +59,32 @@ h1,h2,h3,h4{
   line-height: 1.3;
 }
 p{ margin:0 0 1.4em; }
-
-/* ✅ ESPAÇO NAS LATERAIS */
 .container{ 
   width:min(1120px, 90%); 
   margin:0 auto; 
   padding-left: 1.2rem;
   padding-right: 1.2rem;
 }
-
 :focus-visible{ outline:3px solid var(--dourado); outline-offset:3px; }
-main{ margin-top:0; padding-top:0; }
+main{ 
+  margin-top:0; 
+  padding-top: 76px;
+}
 @media (prefers-reduced-motion: reduce){ *{ animation-duration:.001ms !important; transition-duration:.001ms !important; } }
 
 /* --- Cabeçalho / Navegação --- */
 .site-header{
-  position:sticky; top:0; z-index:50;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index:50;
   background:var(--vinho-escuro);
   border-bottom:2px solid var(--dourado);
   margin-bottom:0;
   width:100%;
   max-width:100vw;
+  transform: translateZ(0);
 }
 .header-bar{
   display:flex; align-items:center; justify-content:space-between;
@@ -99,12 +94,15 @@ main{ margin-top:0; padding-top:0; }
 .brand{ 
   display:flex; align-items:center; gap:.9rem; 
   text-decoration:none;
+  transition: transform 0.3s ease !important;
 }
 .brand-mark{ 
   width:52px; height:52px; flex:none; 
   display:flex; align-items:center; justify-content:center;
   background:transparent;
   border-radius:0;
+  transition: transform 0.35s ease, filter 0.35s ease !important;
+  transform-origin: center center;
 }
 .brand-mark img{ 
   width:100%; height:100%; object-fit:contain; 
@@ -115,6 +113,7 @@ main{ margin-top:0; padding-top:0; }
 .brand-text{ 
   display:flex; flex-direction:column; 
   line-height:1.2;
+  transition: all 0.35s ease !important;
 }
 .brand-text .eyebrow-brand{ 
   display:block; 
@@ -130,6 +129,21 @@ main{ margin-top:0; padding-top:0; }
   font-size:.98rem; 
   color:#fff;
   letter-spacing:.02em; 
+}
+.brand:hover {
+  transform: translateX(4px) !important;
+}
+.brand:hover .brand-mark {
+  transform: scale(1.15) rotate(-5deg) !important;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.35)) !important;
+}
+.brand:hover .brand-text {
+  transform: scale(1.03) !important;
+  letter-spacing: 0.02em !important;
+}
+.brand:hover .brand-name {
+  color: var(--dourado) !important;
+  text-shadow: 0 0 10px rgba(205, 167, 79, 0.35) !important;
 }
 nav.primary-nav{ display:flex; align-items:center; gap:.2rem; }
 nav.primary-nav ul{ list-style:none; display:flex; gap:.1rem; margin:0; padding:0; align-items:center; }
@@ -157,8 +171,6 @@ nav.primary-nav > ul > li.has-dropdown > a::after{
 nav.primary-nav > ul > li.has-dropdown.open > a::after{
   transform:rotate(180deg);
 }
-
-/* --- Dropdown --- */
 .dropdown{
   position:absolute; top:100%; left:0; min-width:260px; 
   background:linear-gradient(160deg, #fff9f5 0%, #ffffff 100%);
@@ -185,7 +197,6 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   border-left-color:var(--dourado);
   padding-left:1.4rem;
 }
-
 .nav-toggle{ display:none; background:none; border:1px solid rgba(243,215,163,.4); padding:.5rem .65rem; font-size:1.1rem; color:#f1e4cc; cursor:pointer; }
 .nav-close{
   display:none;
@@ -207,9 +218,7 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   color:var(--vinho-escuro);
 }
 
-/* ==========================================================
-   🏠 HERO — CAIXA APARECE NO PC, SOME NO CELULAR ✅
-   ========================================================== */
+/* 🏠 HERO */
 .home-hero {
   position: relative;
   width: 100%;
@@ -258,8 +267,6 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   border-bottom-left-radius: 50% 12%;
   border-bottom-right-radius: 50% 12%;
 }
-
-/* ✅ CAIXA VERMELHA — VISÍVEL NO COMPUTADOR */
 .home-hero-box {
   position: absolute;
   top: 70%;
@@ -311,10 +318,6 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   opacity: 0.95;
   line-height: 1.4;
 }
-
-/* ✅ ==============================================
-         SOMENTE NO CELULAR — CAIXA SOME DE VEZ!
-   ============================================== */
 @media (max-width: 980px) {
   .home-hero-box,
   .home-hero-box-inner,
@@ -483,6 +486,7 @@ footer.site-footer a:hover{ color:var(--dourado-claro); transition:.2s ease; }
     padding:5rem 1.2rem 2rem;
     box-shadow:none;
     overflow-y: auto;
+    overscroll-behavior: contain;
     z-index:999;
   }
   nav.primary-nav.open{ 
@@ -522,12 +526,10 @@ footer.site-footer a:hover{ color:var(--dourado-claro); transition:.2s ease; }
     border-left-color:var(--dourado);
   }
 }
-
 @media (max-width:860px){ 
   .grid-3{ grid-template-columns:1fr 1fr; } 
   .footer-grid{ grid-template-columns:1fr 1fr; } 
 }
-
 @media (max-width:640px){
   .header-bar { flex-wrap: nowrap; gap: 0.8rem; padding: 0.8rem 1.2rem; }
   .brand { gap: 0.7rem; margin-left: 0; }
@@ -543,14 +545,12 @@ footer.site-footer a:hover{ color:var(--dourado-claro); transition:.2s ease; }
   footer.site-footer { padding: 2rem 1.2rem; }
   .footer-bottom { flex-direction: column; text-align: center; gap: 0.6rem; }
 }
-
 .site-header.rolando {
   box-shadow: 0 3px 12px rgba(0,0,0,.25);
   background: rgba(89, 20, 20, .97) !important;
   backdrop-filter: blur(6px);
   transition: all .2s ease;
 }
-
 .escondido-antes {
   opacity: 0;
   transform: translateY(15px);
@@ -559,42 +559,4 @@ footer.site-footer a:hover{ color:var(--dourado-claro); transition:.2s ease; }
 .apareceu {
   opacity: 1;
   transform: translateY(0);
-}/* ✅ ANIMAÇÃO DO BRASÃO E NOME — AO PASSAR O MOUSE */
-.brand {
-  transition: transform 0.3s ease !important;
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  text-decoration: none;
-}
-
-/* Ao passar o mouse, o conjunto desliza um pouquinho */
-.brand:hover {
-  transform: translateX(4px) !important;
-}
-
-/* Brasão: gira e cresce com brilho */
-.brand .brand-mark {
-  transition: transform 0.35s ease, filter 0.35s ease !important;
-  transform-origin: center center;
-}
-
-.brand:hover .brand-mark {
-  transform: scale(1.15) rotate(-5deg) !important;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.35)) !important;
-}
-
-/* Texto: cresce um pouquinho e muda a cor */
-.brand .brand-text {
-  transition: all 0.35s ease !important;
-}
-
-.brand:hover .brand-text {
-  transform: scale(1.03) !important;
-  letter-spacing: 0.02em !important;
-}
-
-.brand:hover .brand-name {
-  color: var(--dourado) !important;
-  text-shadow: 0 0 10px rgba(205, 167, 79, 0.35) !important;
 }
