@@ -16,13 +16,11 @@
   --display:        "Cinzel", var(--serif);
   --ui:             "Montserrat", "Helvetica Neue", Arial, sans-serif;
 }
-
 *,*::before,*::after{ 
   box-sizing:border-box; 
   margin:0; 
   padding:0; 
 }
-
 html, body {
   overflow-x: hidden !important;
   width: 100% !important;
@@ -31,16 +29,13 @@ html, body {
   padding: 0 !important;
   touch-action: pan-y;
 }
-
 body.menu-aberto {
   overflow: hidden !important;
-  position:fixed !important;
+  position: fixed !important;
   width: 100% !important;
   height: 100vh !important;
 }
-
 html{ scroll-behavior:smooth; }
-
 body{
   font-family:var(--serif);
   color:var(--tinta);
@@ -48,7 +43,6 @@ body{
   line-height:1.7;
   -webkit-font-smoothing:antialiased;
 }
-
 img{ 
   max-width:100% !important; 
   width: auto !important;
@@ -56,9 +50,7 @@ img{
   display:block;
   object-fit: contain !important;
 }
-
 a{ color:inherit; text-decoration:none; }
-
 h1,h2,h3,h4{ 
   font-family:var(--ui); 
   font-weight:700; 
@@ -66,39 +58,20 @@ h1,h2,h3,h4{
   margin:0 0 .8em;
   line-height: 1.3;
 }
-
 p{ margin:0 0 1.4em; }
-
 .container{ 
   width:min(1120px, 90%); 
   margin:0 auto; 
   padding-left: 1.2rem;
   padding-right: 1.2rem;
 }
-
 :focus-visible{ outline:3px solid var(--dourado); outline-offset:3px; }
-
 main{ 
   margin-top:0; 
   padding-top: 76px;
 }
-
-.escondido-antes {
-  opacity: 0;
-  transform: translateY(15px);
-  transition: opacity .35s ease-out, transform .35s ease-out;
-}
-
-.apareceu {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce){ 
-  *{ animation-duration:.001ms !important; transition-duration:.001ms !important; } 
-}
-
-/* --- CABEÇALHO --- */
+@media (prefers-reduced-motion: reduce){ *{ animation-duration:.001ms !important; transition-duration:.001ms !important; } }
+/* --- Cabeçalho FIXO no topo --- */
 .site-header{
   position: fixed;
   top: 0;
@@ -112,19 +85,16 @@ main{
   max-width:100vw;
   transform: translateZ(0);
 }
-
 .header-bar{
   display:flex; align-items:center; justify-content:space-between;
   gap:1rem; padding:.8rem 1.2rem;
   width:100%;
 }
-
 .brand{ 
   display:flex; align-items:center; gap:.9rem; 
   text-decoration:none;
   transition: transform 0.3s ease !important;
 }
-
 .brand-mark{ 
   width:52px; height:52px; flex:none; 
   display:flex; align-items:center; justify-content:center;
@@ -133,20 +103,17 @@ main{
   transition: transform 0.35s ease, filter 0.35s ease !important;
   transform-origin: center center;
 }
-
 .brand-mark img{ 
   width:100%; height:100%; object-fit:contain; 
   display:block;
   border-radius:0;
   background:transparent;
 }
-
 .brand-text{ 
   display:flex; flex-direction:column; 
   line-height:1.2;
   transition: all 0.35s ease !important;
 }
-
 .brand-text .eyebrow-brand{ 
   display:block; 
   font-family:var(--ui); 
@@ -155,7 +122,6 @@ main{
   font-weight:500; 
   line-height:1.3;
 }
-
 .brand-text .brand-name{ 
   font-family:var(--ui); 
   font-weight:700; 
@@ -163,35 +129,29 @@ main{
   color:#fff;
   letter-spacing:.02em; 
 }
-
 .brand:hover {
   transform: translateX(4px) !important;
 }
-
 .brand:hover .brand-mark {
   transform: scale(1.15) rotate(-5deg) !important;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.35)) !important;
 }
-
 .brand:hover .brand-text {
   transform: scale(1.03) !important;
   letter-spacing: 0.02em !important;
 }
-
 .brand:hover .brand-name {
   color: var(--dourado) !important;
   text-shadow: 0 0 10px rgba(205, 167, 79, 0.35) !important;
 }
-
-/* --- MENU PC --- */
-.nav-toggle, .nav-close{ display:none; }
-
+/* =====================================================
+   💻 MENU PARA PC — Telas GRANDES (acima de 980px)
+   ===================================================== */
 nav.primary-nav{ 
   display:flex; 
   align-items:center; 
   gap:.2rem; 
 }
-
 nav.primary-nav ul{ 
   list-style:none; 
   display:flex; 
@@ -200,17 +160,13 @@ nav.primary-nav ul{
   padding:0; 
   align-items:center; 
 }
-
 nav.primary-nav > ul > li{ position:relative; }
-
 nav.primary-nav > ul > li > a{
   display:block; padding:.7rem 1rem; font-family:var(--ui); font-size:.88rem; font-weight:500;
   letter-spacing:.01em; color:#fff; border-bottom:2px solid transparent; 
   transition:all .25s ease; cursor:pointer;
 }
-
 nav.primary-nav > ul > li > a:hover{ color:var(--dourado); border-bottom-color:var(--dourado); }
-
 nav.primary-nav > ul > li.active > a,
 nav.primary-nav > ul > li.has-dropdown.active > a{ 
   background:transparent; 
@@ -218,7 +174,6 @@ nav.primary-nav > ul > li.has-dropdown.active > a{
   font-weight:600; 
   border-bottom:2px solid var(--dourado); 
 }
-
 nav.primary-nav > ul > li.has-dropdown > a::after{ 
   content:" ▾"; 
   font-size:.7em; 
@@ -226,11 +181,10 @@ nav.primary-nav > ul > li.has-dropdown > a::after{
   display:inline-block;
   transition:transform .25s ease;
 }
-
 nav.primary-nav > ul > li.has-dropdown.open > a::after{
   transform:rotate(180deg);
 }
-
+/* Dropdown no PC */
 .dropdown{
   position:absolute; top:100%; left:0; min-width:260px; 
   background:linear-gradient(160deg, #fff9f5 0%, #ffffff 100%);
@@ -239,13 +193,11 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   padding:.7rem 0; border-radius:10px;
   opacity:0; visibility:hidden; transform:translateY(12px);
   transition:opacity .25s ease, transform .25s ease, visibility .25s;
-  z-index:9999;
+  z-index:9999; /* ⬆️ Aumentado para ficar POR CIMA de tudo */
 }
-
 .has-dropdown.open .dropdown{ 
   opacity:1; visibility:visible; transform:translateY(0); 
 }
-
 .dropdown a{ 
   display:block; padding:.85rem 1.2rem; font-family:var(--ui); 
   font-size:.9rem; color:var(--marrom); 
@@ -253,26 +205,110 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   transition:all .2s ease;
   border-left:3px solid transparent;
 }
-
 .dropdown a:hover{ 
   background:linear-gradient(90deg, rgba(205,167,79,.18) 0%, transparent 100%); 
   color:var(--vinho); 
   border-left-color:var(--dourado);
   padding-left:1.4rem;
 }
-
+/* Botões de ABRIR/FECHAR menu — SOMENTE CELULAR */
+.nav-toggle, .nav-close{ display:none; }
 /* =====================================================
-   🏠 HERO — EXATAMENTE IGUAL AO ORIGINAL, só responsivo
+   📱 MENU PARA CELULAR — Telas PEQUENAS (abaixo de 980px)
    ===================================================== */
+@media (max-width:980px){
+  /* Mostra o botão hambúrguer */
+  .nav-toggle{ display:block; background:none; border:1px solid rgba(243,215,163,.4); padding:.5rem .65rem; font-size:1.1rem; color:#f1e4cc; cursor:pointer; }
+  
+  /* Transforma o menu em LATERAL deslizante */
+  nav.primary-nav{
+    position:fixed; 
+    top:0; 
+    right:0; 
+    bottom:0; 
+    width:min(320px,86%); 
+    height:100vh;
+    background:var(--vinho-escuro);
+    flex-direction:column; 
+    align-items:stretch;
+    transform:translateX(105%);
+    visibility: hidden;
+    transition:transform .25s ease, visibility .25s ease; 
+    padding:5rem 1.2rem 2rem;
+    box-shadow:none;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    z-index:9999;
+  }
+  nav.primary-nav.open{ 
+    transform:translateX(0); 
+    visibility: visible;
+    box-shadow: -5px 0 20px rgba(0,0,0,.3);
+  }
+  /* Botão de fechar dentro do menu lateral */
+  .nav-close{
+    display:block;
+    position:absolute;
+    top:1rem;
+    right:1rem;
+    background:transparent;
+    border:1px solid var(--dourado);
+    color:var(--dourado);
+    font-size:1rem;
+    padding:.4rem .8rem;
+    border-radius:6px;
+    cursor:pointer;
+    transition:all .25s ease;
+    z-index:200;
+  }
+  .nav-close:hover{
+    background:var(--dourado);
+    color:var(--vinho-escuro);
+  }
+  /* Itens do menu empilhados */
+  nav.primary-nav ul{ flex-direction:column; align-items:stretch; }
+  nav.primary-nav > ul > li > a{ border-bottom:1px solid rgba(205,167,79,.15); }
+  
+  /* Dropdown vira submenu dentro do menu lateral */
+  .dropdown{ 
+    position:static; 
+    max-height:0; 
+    opacity:0; 
+    visibility:hidden; 
+    transform:translateY(0); 
+    box-shadow:none; 
+    border:none; 
+    background:rgba(0,0,0,.15);
+    padding-left:.8rem; 
+    padding-top:0; 
+    margin:0;
+    overflow:hidden;
+    transition:max-height .25s ease, opacity .2s ease, padding .25s ease;
+  }
+  .has-dropdown.open .dropdown{ 
+    max-height:500px; 
+    opacity:1; 
+    visibility:visible; 
+    padding-top:.5rem;
+  }
+  .has-dropdown > a::after{ float:right; }
+  .dropdown a{ color:#f1e4cc; border-left-color:transparent; }
+  .dropdown a:hover{ 
+    background:rgba(205,167,79,.25); 
+    color:#fff; 
+    border-left-color:var(--dourado);
+  }
+}
+/* 🏠 HERO */
 .home-hero {
   position: relative;
   width: 100%;
+  max-width: 100vw;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background: var(--creme);
 }
-
 .home-hero-photo {
   position: relative;
   width: 100%;
@@ -283,7 +319,6 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   border-bottom-left-radius: 50% 12%;
   border-bottom-right-radius: 50% 12%;
 }
-
 .home-hero-photo-img {
   position: absolute;
   top: 0;
@@ -295,7 +330,6 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   display: block;
   z-index: 1;
 }
-
 .home-hero-photo::after {
   content: "";
   position: absolute;
@@ -314,17 +348,15 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   border-bottom-left-radius: 50% 12%;
   border-bottom-right-radius: 50% 12%;
 }
-
 .home-hero-box {
   position: absolute;
-  top: 50%;
+  top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
   width: min(520px, 92%);
   display: block;
 }
-
 .home-hero-box-inner {
   width: 100%;
   background: linear-gradient(
@@ -340,37 +372,53 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(4px);
 }
-
 .home-hero-box-inner h1 {
   font-family: var(--display);
   color: #fff;
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
   margin: 0 0 0.6rem;
   letter-spacing: 0.02em;
   line-height: 1.4;
   font-weight: 600;
   text-transform: uppercase;
 }
-
 .hero-text {
   font-family: var(--serif);
   font-style: italic;
   color: var(--dourado-claro);
-  font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+  font-size: 0.9rem;
   margin-bottom: 0.4rem;
   line-height: 1.5;
 }
-
 .hero-meta {
   font-family: var(--serif);
   font-style: italic;
-  font-size: clamp(0.75rem, 1.3vw, 0.85rem);
+  font-size: 0.8rem;
   color: #e9d4b8;
   margin-bottom: 0;
   opacity: 0.95;
   line-height: 1.4;
 }
-
+@media (max-width: 980px) {
+  .home-hero-box,
+  .home-hero-box-inner,
+  .home-hero-box * {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+    z-index: -9999 !important;
+    pointer-events: none !important;
+    overflow: hidden !important;
+  }
+}
 /* --- SEÇÕES --- */
 section { 
   padding: 3.5rem 1.2rem; 
@@ -378,11 +426,9 @@ section {
   max-width: 100vw; 
   overflow: hidden;
 }
-
 .section-block { padding-top: 1.5rem; }
-
+/* --- Cartões: Prior Geral e Fundador --- */
 .prior-message{ padding-top:0; }
-
 .priest-card, .founder-card{
   display:flex; gap:1.8rem; align-items:flex-start; background:#fff;
   padding:2rem; border-radius:8px; box-shadow:0 3px 10px rgba(67,40,24,.12);
@@ -390,46 +436,36 @@ section {
   width: 100%;
   box-sizing: border-box;
 }
-
 .priest-card{ border-left:5px solid var(--dourado); }
 .founder-card{ border-left:5px solid var(--marrom); background:linear-gradient(90deg,#fff9f5 0%,#ffffff 100%); }
-
 .priest-photo, .founder-photo{
   width:150px; flex:none; border-radius:6px; overflow:hidden;
   border:3px solid var(--dourado-claro); box-shadow:0 2px 8px rgba(0,0,0,.15);
   margin-top: 1rem;
 }
-
 .priest-photo img, .founder-photo img{ 
   width:100%; height:100%; object-fit:cover; 
 }
-
 .priest-content h3{
   color:var(--marrom); font-family:var(--display); font-size:1.15rem; margin-bottom:1rem;
   padding-bottom:.5rem; border-bottom:2px dotted var(--dourado-claro);
 }
-
 .priest-content p{ margin-bottom:1rem; font-size:.98rem; line-height:1.7; }
-
 .prior-blessing{ margin-top:1rem; font-weight:600; color:var(--marrom); }
-
 .card-quote{
   font-style:italic; color:var(--marrom); margin:1rem 0 1.4rem; padding:1rem 1.2rem;
   border-left:4px solid var(--dourado); border-radius:0 6px 6px 0;
   background:linear-gradient(90deg, rgba(205,167,79,.14) 0%, transparent 100%);
   font-size:.98rem; line-height:1.7;
 }
-
 .founder-cite{ 
   font-family:var(--ui); font-weight:700; font-size:.9rem; 
   letter-spacing:.02em; color:var(--marrom); margin-bottom:.5rem; 
 }
-
 .founder-sub{ font-size:.85rem; color:#777; margin-top:.3rem; }
-
+/* --- Grids e Cards --- */
 .grid{ display:grid; gap:2rem; width:100%; }
 .grid-3{ grid-template-columns:repeat(3,1fr); }
-
 .card{
   background:#fff; border:none; border-radius:8px; padding:2rem;
   box-shadow:0 3px 10px rgba(67,40,24,.10); border-top:4px solid var(--dourado);
@@ -437,62 +473,52 @@ section {
   width:100%;
   box-sizing:border-box;
 }
-
 .card:hover{ transform:translateY(-4px); box-shadow:0 5px 15px rgba(67,40,24,.18); }
-
 .card h3{ font-size:1.08rem; color:var(--marrom); margin-bottom:1rem; }
 .card p{ font-size:.95rem; line-height:1.7; }
-
+/* --- Botões --- */
 .btn{
   display:inline-block; font-family:var(--ui); font-weight:600; font-size:.88rem; letter-spacing:.01em;
   padding:.75rem 1.4rem; border:none; border-radius:5px; color:#fff; background:var(--marrom); cursor:pointer;
   transition:all .3s ease;
 }
-
 .btn:hover{ background:#5a3622; box-shadow:0 3px 8px rgba(67,40,24,.3); }
-
 .btn-gold{ 
   background:linear-gradient(135deg, var(--dourado) 0%, var(--ouro-brilhante) 100%); 
   color:var(--marrom); font-weight:700; 
 }
-
 .btn-gold:hover{ 
   background:linear-gradient(135deg, var(--ouro-brilhante) 0%, var(--dourado) 100%); 
   color:var(--marrom); 
 }
-
+/* --- Rodapé --- */
 footer.site-footer{ 
   background:var(--vinho); color:#e9d4b8; padding:3rem 1.2rem; 
   border-top:4px solid var(--dourado); margin-top:2rem; 
   width:100%;
   max-width:100vw;
 }
-
 footer.site-footer h4{ 
   color:var(--dourado); font-size:1rem; letter-spacing:.02em; 
   margin-bottom:1.2rem; padding-bottom:.5rem; 
   border-bottom:1px solid rgba(205,167,79,.3); 
 }
-
 footer.site-footer p{ font-size:.9rem; line-height:1.7; }
 footer.site-footer a{ color:#F0E6CC; font-size:.9rem; }
 footer.site-footer a:hover{ color:var(--dourado-claro); transition:.2s ease; }
-
 .footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:2.5rem; }
 .footer-grid ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.7rem; }
-
 .footer-bottom{ 
   margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,.14); 
   font-family:var(--ui); font-size:.78rem; color:#e9d4b8; 
   display:flex; justify-content:space-between; flex-wrap:wrap; gap:.8rem; 
 }
-
+/* --- Ícones Redes Sociais --- */
 .social-row {
   display: flex;
   gap: 12px;
   margin-top: 1rem;
 }
-
 .social-row a {
   width: 40px;
   height: 40px;
@@ -504,145 +530,218 @@ footer.site-footer a:hover{ color:var(--dourado-claro); transition:.2s ease; }
   border-radius: 0;
   padding: 0 !important;
 }
-
 .social-row a img {
   width: 40px !important;
   height: 40px !important;
   object-fit: contain !important;
   display: block !important;
 }
-
 .social-row a:hover {
   transform: scale(1.15);
 }
-
+/* Outros estilos */
+@media (max-width:860px){ 
+  .grid-3{ grid-template-columns:1fr 1fr; } 
+  .footer-grid{ grid-template-columns:1fr 1fr; } 
+}
+@media (max-width:640px){
+  .header-bar { flex-wrap: nowrap; gap: 0.8rem; padding: 0.8rem 1.2rem; }
+  .brand { gap: 0.7rem; margin-left: 0; }
+  .brand-mark { width: 40px !important; height: 40px !important; flex-shrink: 0; }
+  .brand-text { margin-top: 0.2rem; }
+  .brand-text .eyebrow-brand { font-size: 0.65rem; line-height: 1.1; }
+  .brand-text .brand-name { font-size: 0.85rem; line-height: 1.2; }
+  section { padding: 2.5rem 1.2rem; }
+  .priest-card, .founder-card { flex-direction: column; text-align: center; gap: 1.2rem; padding: 1.5rem; }
+  .priest-photo, .founder-photo { margin: 0 auto; width: 120px; height: auto; }
+  .grid-3 { grid-template-columns: 1fr; gap: 1.5rem; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  footer.site-footer { padding: 2rem 1.2rem; }
+  .footer-bottom { flex-direction: column; text-align: center; gap: 0.6rem; }
+}
 .site-header.rolando {
   box-shadow: 0 3px 12px rgba(0,0,0,.25);
   background: rgba(89, 20, 20, .97) !important;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<!-- Linha ALTERADA: bloqueia zoom e redimensionamento -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Início | Instituto Missionário Servos de Jesus Salvador</title>
+<meta name="description" content="Instituto Missionário Servos de Jesus Salvador — Fraternidade Jesus Salvador, Salvistas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-bar">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <img src="images/brasao.png" alt="Brasão do Instituto" width="44" height="44">
+      </span>
+      <span class="brand-text">
+        <span class="eyebrow-brand">Instituto Missionário Servos de Jesus Salvador</span>
+        <span class="brand-name">Salvistas</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <nav class="primary-nav" aria-label="Menu principal">
+      <button class="nav-close" aria-label="Fechar menu">✕</button>
+      <ul>
+        <li class="active"><a href="index.html">Home</a></li>
+        <li class="has-dropdown">
+          <a href="#" class="dropdown-trigger">Cursos</a>
+          <div class="dropdown">
+            <a href="cursos.html">Cursos</a>
+            <a href="formacao-permanente.html">Formação Permanente</a>
+          </div>
+        </li>
+        <li class="has-dropdown">
+          <a href="#" class="dropdown-trigger">Sobre o Instituto</a>
+          <div class="dropdown">
+            <a href="quem-somos.html">Quem Somos</a>
+            <a href="fundador.html">Fundador</a>
+            <a href="governo-geral.html">Governo Geral</a>
+            <a href="irmaos-salvistas.html">Irmãos Salvistas</a>
+            <a href="irmandade.html">Irmandade N. Sra. de Pentecostes</a>
+            <a href="ordem-terceira.html">Ordem Terceira</a>
+            <a href="onde-estamos.html">Onde Estamos</a>
+            <a href="doacoes.html">Ajude esta Obra</a>
+          </div>
+        </li>
+        <li class=""><a href="vocacional.html">Vocacional</a></li>
+        <li class=""><a href="loja.html">Loja</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="home-hero">
+  <div class="home-hero-photo">
+    <img class="home-hero-photo-img" src="images/capitulo-geral.jpg" alt="Capítulo Geral — todos os irmãos do Instituto Missionário Servos de Jesus Salvador">
+    <div class="home-hero-box">
+      <div class="home-hero-box-inner">
+        <h1>Instituto Missionário Servos de Jesus Salvador</h1>
+        <p class="hero-text">Reunidos em torno de um só carisma, a serviço da Igreja e do mundo.</p>
+        <p class="hero-meta">Todos os irmãos — Capítulo Geral, [ano] — [Cidade, País]</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="container">
+<section class="prior-message">
+  <div class="priest-card">
+    <div class="photo priest-photo"><img src="images/prior-geral.jpg" alt="Pe. Myguel Tostes, sjs — Prior Geral" loading="lazy"></div>
+    <div class="priest-content">
+      <h3>PRIOR GERAL — Padre Myguel Tostes</h3>
+      <p class="card-quote">"Dar a Deus o máximo: com humildade para servir, coragem para a missão e amor para caminhar juntos."</p>
+      <p>Queridos irmãos e irmãs,</p>
+      <p>Somos chamados a caminhar como uma só família, colocando nossos dons a serviço de Cristo e da Igreja. Que cada encontro seja oportunidade de acolher, servir e anunciar o Evangelho com alegria.</p>
+      <p>Confiamos nossa missão ao Senhor e, unidos, com um coração disponível para aquilo que Ele nos pede.</p>
+      <p class="prior-blessing">Com minha bênção e oração,</p>
+    </div>
+  </div>
+</section>
+<section class="section-block">
+  <div class="founder-card">
+    <div class="photo founder-photo"><img src="images/fundador.jpg" alt="Padre Gilberto Maria Defina, sjs — Fundador" loading="lazy"></div>
+    <div class="priest-content">
+      <p class="card-quote">"Embora não vendo mais Jesus, acreditem em Jesus, que amem o Senhor Jesus embora não o tenham conhecido."</p>
+      <p class="founder-cite">PADRE GILBERTO MARIA DEFINA, SJS — FUNDADOR</p>
+      <p class="founder-sub">(Em Processo de Beatificação)</p>
+      <a href="fundador.html" class="btn">Conhecer o Fundador</a>
+    </div>
+  </div>
+</section>
+<section class="services-grid grid grid-3">
+  <div class="card">
+    <h3>Vocacional</h3>
+    <p>Você sente o chamado a servir a Jesus Salvador? Conheça o caminho de discernimento.</p>
+    <a href="vocacional.html" class="btn">Saiba mais</a>
+  </div>
+  <div class="card">
+    <h3>Irmandade N. Sra. de Pentecostes</h3>
+    <p>A esfera laical que caminha unida à espiritualidade Salvista, em devoção à nossa padroeira.</p>
+    <a href="irmandade.html" class="btn">Saiba mais</a>
+  </div>
+  <div class="card">
+    <h3>Ajude esta Obra</h3>
+    <p>Sua contribuição sustenta a missão evangelizadora dos Salvistas pelo mundo.</p>
+    <a href="doacoes.html" class="btn btn-gold">Doar agora</a>
+  </div>
+</section>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Instituto Missionário Servos de Jesus Salvador</h4>
+        <p>Fraternidade Jesus Salvador — "Laus Dei". Reunidos em torno de um só carisma, a serviço da Igreja e do mundo.</p>
+        <div class="social-row" aria-label="Redes sociais">
+          <a href="#" aria-label="Facebook">
+            <img src="images/facebook.png" alt="Facebook">
+          </a>
+          <a href="#" aria-label="Instagram">
+            <img src="images/instagram.png" alt="Instagram">
+          </a>
+          <a href="#" aria-label="WhatsApp">
+            <img src="images/whatsapp.png" alt="WhatsApp">
+          </a>
+          <a href="#" aria-label="YouTube">
+            <img src="images/youtube.png" alt="YouTube">
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4>Instituto</h4>
+        <ul>
+          <li><a href="quem-somos.html">Quem Somos</a></li>
+          <li><a href="fundador.html">Fundador</a></li>
+          <li><a href="governo-geral.html">Governo Geral</a></li>
+          <li><a href="irmaos-salvistas.html">Irmãos Salvistas</a></li>
+          <li><a href="onde-estamos.html">Onde Estamos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Participe</h4>
+        <ul>
+          <li><a href="vocacional.html">Vocacional</a></li>
+          <li><a href="irmandade.html">Irmandade N. Sra. de Pentecostes</a></li>
+          <li><a href="ordem-terceira.html">Ordem Terceira</a></li>
+          <li><a href="cursos.html">Cursos</a></li>
+          <li><a href="loja.html">Loja</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li>[e-mail a definir]</li>
+          <li>[telefone/WhatsApp a definir]</li>
+          <li>[endereço da Casa-Mãe a definir]</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span class="js-year"></span> Instituto Missionário Servos de Jesus Salvador · sjs</span>
+      <span>Lema: "No mínimo, devemos dar a Deus o máximo"</span>
+    </div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html> quando eu to diminuindo a tela no pc ela nao fica do mesmo jeito 
+  transition: all .2s ease;
 }
-
-/* ====================================================================
-   ✅ A PARTIR DAQUI: SÓ RESPONSIVIDADE — NÃO ALTERA O PC
-   Só muda quando a tela diminui. No PC continua IGUAL.
-   ==================================================================== */
-
-/* --- Telas médias (PC reduzido) --- */
-@media (max-width:900px){
-  .grid-3{ grid-template-columns:repeat(2,1fr); }
-  .footer-grid{ grid-template-columns:repeat(2,1fr); }
-  
-  /* Menu vira lateral só abaixo de 900px */
-  .nav-toggle{ display:block; background:none; border:1px solid rgba(243,215,163,.4); padding:.5rem .65rem; font-size:1.1rem; color:#f1e4cc; cursor:pointer; }
-  
-  nav.primary-nav{
-    position:fixed; 
-    top:0; 
-    right:0; 
-    width:min(320px,86%); 
-    height:100vh;
-    background:var(--vinho-escuro);
-    flex-direction:column; 
-    align-items:stretch;
-    transform:translateX(105%);
-    visibility: hidden;
-    transition:transform .25s ease, visibility .25s ease; 
-    padding:5rem 1.2rem 2rem;
-    box-shadow:none;
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    z-index:9999;
-  }
-
-  nav.primary-nav.open{ 
-    transform:translateX(0); 
-    visibility: visible;
-    box-shadow: -5px 0 20px rgba(0,0,0,.3);
-  }
-
-  .nav-close{
-    display:block;
-    position:absolute;
-    top:1rem;
-    right:1rem;
-    background:transparent;
-    border:1px solid var(--dourado);
-    color:var(--dourado);
-    font-size:1rem;
-    padding:.4rem .8rem;
-    border-radius:6px;
-    cursor:pointer;
-    transition:all .25s ease;
-    z-index:200;
-  }
-
-  .nav-close:hover{
-    background:var(--dourado);
-    color:var(--vinho-escuro);
-  }
-
-  nav.primary-nav ul{ flex-direction:column; width:100%; }
-  nav.primary-nav > ul > li{ width:100%; }
-  nav.primary-nav > ul > li > a{ border-bottom:1px solid rgba(205,167,79,.15); }
-  
-  .dropdown{ 
-    position:static; 
-    max-height:0; 
-    opacity:0; 
-    visibility:hidden; 
-    transform:none; 
-    box-shadow:none; 
-    border:none; 
-    background:rgba(0,0,0,.15);
-    padding-left:.8rem; 
-    padding-top:0; 
-    margin:0;
-    overflow:hidden;
-    transition:max-height .25s ease, opacity .2s ease;
-  }
-
-  .has-dropdown.open .dropdown{ 
-    max-height:500px; 
-    opacity:1; 
-    visibility:visible; 
-    padding-top:.5rem;
-  }
-
-  .has-dropdown > a::after{ float:right; }
-  .dropdown a{ color:#f1e4cc; border-left-color:transparent; }
-  .dropdown a:hover{ 
-    background:rgba(205,167,79,.25); 
-    color:#fff; 
-    border-left-color:var(--dourado);
-  }
-
-  /* Hero se ajusta */
-  .home-hero-photo{ padding-top:55%; }
+.escondido-antes {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity .35s ease-out, transform .35s ease-out;
 }
-
-/* --- Celular --- */
-@media (max-width:600px){
-  .header-bar { flex-wrap:nowrap; gap: 0.5rem; padding: 0.8rem 1rem; }
-  .brand { gap: 0.5rem; }
-  .brand-mark { width: 42px; height: 42px; }
-  .brand-text .eyebrow-brand { font-size: 0.65rem; }
-  .brand-text .brand-name { font-size: 0.85rem; }
-  
-  section { padding: 2.5rem 1rem; }
-  
-  .priest-card, .founder-card { 
-    flex-direction: column; 
-    text-align: center; 
-    gap: 1rem; 
-    padding: 1.5rem; 
-  }
-  .priest-photo, .founder-photo { margin: 0 auto; width: 130px; }
-  
-  .grid-3 { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .footer-bottom { flex-direction: column; text-align: center; gap: 0.5rem; }
-  
-  .home-hero-photo { padding-top: 70%; border-bottom-left-radius: 50% 8%; border-bottom-right-radius: 50% 8%; }
-  .home-hero-photo::after { height: 25px; }
-  .home-hero-box-inner { padding: 1rem; }
+.apareceu {
+  opacity: 1;
+  transform: translateY(0);
 }
