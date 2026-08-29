@@ -269,10 +269,8 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
    📱 MENU PARA CELULAR — Telas PEQUENAS (abaixo de 768px)
    ===================================================== */
 @media (max-width: 768px) {
-  /* Mostra o botão hambúrguer */
   .nav-toggle{ display:block; background:none; border:1px solid rgba(243,215,163,.4); padding:.5rem .65rem; font-size:1.1rem; color:#f1e4cc; cursor:pointer; }
   
-  /* Transforma o menu em LATERAL deslizante */
   nav.primary-nav{
     position:fixed; 
     top:0; 
@@ -299,7 +297,6 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
     box-shadow: -5px 0 20px rgba(0,0,0,.3);
   }
 
-  /* Botão de fechar dentro do menu lateral */
   .nav-close{
     display:block;
     position:absolute;
@@ -321,11 +318,9 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
     color:var(--vinho-escuro);
   }
 
-  /* Itens do menu empilhados */
   nav.primary-nav ul{ flex-direction:column; align-items:stretch; }
   nav.primary-nav > ul > li > a{ border-bottom:1px solid rgba(205,167,79,.15); }
   
-  /* Dropdown vira submenu dentro do menu lateral */
   .dropdown{ 
     position:static; 
     max-height:0; 
@@ -358,12 +353,12 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   }
 }
 
-/* 🏠 HERO */
+/* 🏠 HERO — CORRIGIDO */
 .home-hero {
   position: relative;
-  width: 100%;
-  max-width: 100vw;
-  margin: 0;
+  width: min(1120px, 90%);
+  max-width: 1120px;
+  margin: 0 auto;
   padding: 0;
   overflow: hidden;
   background: var(--creme);
@@ -372,12 +367,12 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
 .home-hero-photo {
   position: relative;
   width: 100%;
-  padding-top: 50%;
+  padding-top: 42%;
   overflow: hidden;
   z-index: 1;
   border-radius: 0;
-  border-bottom-left-radius: 50% 12%;
-  border-bottom-right-radius: 50% 12%;
+  border-bottom-left-radius: 50% 8%;
+  border-bottom-right-radius: 50% 8%;
 }
 
 .home-hero-photo-img {
@@ -387,7 +382,7 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center;
   display: block;
   z-index: 1;
 }
@@ -398,7 +393,7 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 40px;
+  height: 25px;
   background: linear-gradient(
     90deg,
     transparent 0%,
@@ -407,8 +402,8 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
     #CDA74F 80%,
     transparent 100%
   );
-  border-bottom-left-radius: 50% 12%;
-  border-bottom-right-radius: 50% 12%;
+  border-bottom-left-radius: 50% 8%;
+  border-bottom-right-radius: 50% 8%;
 }
 
 .home-hero-box {
@@ -467,29 +462,25 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   line-height: 1.4;
 }
 
-/* ✅ HERO VISÍVEL EM TODAS AS TELAS — apenas ajusta tamanhos */
 @media (max-width: 980px) {
+  .home-hero {
+    max-width: 100%;
+    width: 90%;
+  }
   .home-hero-photo {
-    padding-top: 55%;
-  }
-  
-  .home-hero-box {
-    top: 50%;
-    width: min(460px, 92%);
-  }
-
-  .home-hero-box-inner {
-    padding: 1.2rem 1.4rem;
+    padding-top: 50%;
   }
 }
 
 @media (max-width: 640px) {
   .home-hero-photo {
-    padding-top: 70%;
+    padding-top: 65%;
   }
-  
   .home-hero-box-inner {
     padding: 1rem;
+  }
+  .home-hero-box-inner h1 {
+    font-size: 1rem;
   }
 }
 
@@ -504,7 +495,7 @@ section {
 .section-block { padding-top: 1.5rem; }
 
 /* --- Cartões: Prior Geral e Fundador --- */
-.prior-message{ padding-top:0; }
+.prior-message{ padding-top:2rem; }
 
 .priest-card, .founder-card{
   display:flex; gap:1.8rem; align-items:flex-start; background:#fff;
